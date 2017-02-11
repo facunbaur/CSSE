@@ -9,8 +9,8 @@ given_NonErrorTests = [
         'input': 'abc%3D123',
         'expected': {'abc': '123'},
     }, {
-        'input':  'function%20%3D%20get stars',
-        'expected': {'function': 'get stars'},
+        'input':  'function%20%3D%20getstars',
+        'expected': {'function': 'getstars'},
     }, {
         'input': 'function%3D%20calculatePosition%2C%20sighting%3DBetelgeuse',
         'expected': {'function': 'calculatePosition', 'sighting': 'Betelgeuse'},
