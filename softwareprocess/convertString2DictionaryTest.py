@@ -67,6 +67,9 @@ key_validation_tests = [
     }, {
         'input': 'a_b_c',       # Underscores are not allowed.
         'expected': False,
+    }, {
+        'input': '',            # Must be nonzero length.
+        'expected': False,
     }
 ]
 
@@ -91,6 +94,9 @@ value_validation_tests = [
         'expected': True,
     }, {
         'input': 'a_b_c',       # Underscores are not allowed.
+        'expected': False,
+    }, {
+        'input': '',            # Must be nonzero length.
         'expected': False,
     }
 ]
