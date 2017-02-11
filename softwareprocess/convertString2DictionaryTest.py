@@ -1,10 +1,10 @@
 from __future__ import print_function
 import unittest
 
-from convertString2Dictionary import convertString2Dictionary
+from convertString2Dictionary import convertString2Dictionary, is_valid_key, is_valid_value
 
 
-givenTests = [
+given_NonErrorTests = [
     {
         'input': 'abc%3D123',
         'expected': {'abc': '123'},
@@ -14,7 +14,11 @@ givenTests = [
     }, {
         'input': 'function%3D%20calculatePosition%2C%20sighting%3DBetelgeuse',
         'expected': {'function': 'calculatePosition', 'sighting': 'Betelgeuse'},
-    }, {
+    }
+]
+
+given_ErrorTests = [
+    {
         'input':  'function%20%3D%20get_stars',     # Underscores are not allowed.
         'expected': {'error': 'true'},
     }, {
@@ -41,14 +45,75 @@ givenTests = [
     }
 ]
 
+key_validation_tests = [
+    {
+        'input': 'aBc',
+        'expected': True,
+    }, {
+        'input': 'Abc',
+        'expected': True,
+    }, {
+        'input': 'abc123',
+        'expected': True,
+    }, {
+        'input': 'a b c',       # Spaces are not allowed.
+        'expected': False,
+    }, {
+        'input': ' abc',        # Spaces are not allowed.
+        'expected': False,
+    }, {
+        'input': '1abc',        # Keys cannot start with a number.
+        'expected': False,
+    }, {
+        'input': 'a_b_c',       # Underscores are not allowed.
+        'expected': False,
+    }
+]
+
+value_validation_tests = [
+    {
+        'input': 'aBc',
+        'expected': True,
+    }, {
+        'input': 'Abc',
+        'expected': True,
+    }, {
+        'input': 'abc123',
+        'expected': True,
+    }, {
+        'input': 'a b c',       # Spaces are not allowed.
+        'expected': False,
+    }, {
+        'input': ' abc',        # Spaces are not allowed.
+        'expected': False,
+    }, {
+        'input': '1abc',        # Unlike keys, values cannot start with a number.
+        'expected': True,
+    }, {
+        'input': 'a_b_c',       # Underscores are not allowed.
+        'expected': False,
+    }
+]
 
 class TestConvertString2Dictionary(unittest.TestCase):
 
-    def test_given(self):
-        for test in givenTests:
-            returned = convertString2Dictionary(test['input'])
-            print('Testing input ', test['input'])
+    def run_test(self, function, testdata=[]):
+        for test in testdata:
+            print('Testing input "{0}"'.format(test['input']))
+            returned = function(test['input'])
             self.assertEqual(returned, test['expected'])
+
+    def test_given_nonerror(self):
+        self.run_test(convertString2Dictionary, given_NonErrorTests)
+
+    def test_given_error(self):
+        self.run_test(convertString2Dictionary, given_ErrorTests)
+
+    def test_key_validation(self):
+        self.run_test(is_valid_key, key_validation_tests)
+
+    def test_value_validation(self):
+        self.run_test(is_valid_value, value_validation_tests)
 
 if __name__ == '__main__':
     unittest.main()
