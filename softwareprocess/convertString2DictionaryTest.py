@@ -3,7 +3,7 @@ import unittest
 
 from convertString2Dictionary import convertString2Dictionary, is_valid_key, is_valid_value
 
-
+# All of the provided tests that are expected to complete successfully.
 given_NonErrorTests = [
     {
         'input': 'abc%3D123',
@@ -17,6 +17,7 @@ given_NonErrorTests = [
     }
 ]
 
+# All of the provided tests that are expected to fail.
 given_ErrorTests = [
     {
         'input':  'function%20%3D%20get_stars',     # Underscores are not allowed.
@@ -45,6 +46,7 @@ given_ErrorTests = [
     }
 ]
 
+# Tests for is_valid_key.
 key_validation_tests = [
     {
         'input': 'aBc',
@@ -73,6 +75,7 @@ key_validation_tests = [
     }
 ]
 
+# Tests for is_valid_value.
 value_validation_tests = [
     {
         'input': 'aBc',
@@ -101,24 +104,44 @@ value_validation_tests = [
     }
 ]
 
+
 class TestConvertString2Dictionary(unittest.TestCase):
+    """
+    TestConvertString2Dictionary contains tests for ConvertString2Dictionary and all helper methods.
+    """
 
-    def run_test(self, function, testdata=[]):
-        for test in testdata:
-            print('Testing input "{0}"'.format(test['input']))
-            returned = function(test['input'])
-            self.assertEqual(returned, test['expected'])
+    def run_test(self, function, test_data=[]):
+        """
+        Will run a test of tests against a given function.
+        :param function: The function to test.
+        :param test_data: A list of tests to run. They should be of the form
+        { 'input' <sample input> : 'expected' < expected output> }
+        """
+        for test in test_data:
+            self.assertEqual(function(test['input']), test['expected'])
 
-    def test_given_nonerror(self):
+    def test_given_non_error(self):
+        """
+        Test convertString2Dictionary against all provided tests that are expected to complete successfully.
+        """
         self.run_test(convertString2Dictionary, given_NonErrorTests)
 
     def test_given_error(self):
+        """
+        Test convertString2Dictionary against all provided tests that are expected to complete unsuccessfully.
+        """
         self.run_test(convertString2Dictionary, given_ErrorTests)
 
     def test_key_validation(self):
+        """
+        Test is_valid_key.
+        """
         self.run_test(is_valid_key, key_validation_tests)
 
     def test_value_validation(self):
+        """
+        Test is_valid_value.
+        """
         self.run_test(is_valid_value, value_validation_tests)
 
 if __name__ == '__main__':
