@@ -1,3 +1,8 @@
+"""
+    Created on 2/11/2016
+
+    @author: Mitchell Price
+"""
 from __future__ import print_function
 import urllib
 
@@ -11,60 +16,60 @@ def convertString2Dictionary(inputString = ""):
     :return: A dictionary represented by the input string. In the event of an error, {'error' : 'true'} will be returned
     """
 
-    error_dict = {'error':'true'} # Returned in the event of an error.
-    out_dict = {}                 # Holds successful key-value pairs.
+    errorDict = {'error': 'true'} # Returned in the event of an error.
+    outDict = {}                 # Holds successful key-value pairs.
 
     # Separate the input string on commas and strip whitespace between elements.
-    key_value_pairs_list = [str.strip() for str in urllib.unquote(inputString).split(',')]
+    keyValuePairsList = [str.strip() for str in urllib.unquote(inputString).split(',')]
 
     # We must have at least one key-value pair.
-    if len(key_value_pairs_list) == 0:
-        return error_dict
+    if len(keyValuePairsList) == 0:
+        return errorDict
 
-    for key_value_pair in key_value_pairs_list:
+    for keyValuePair in keyValuePairsList:
         # Split each instance of "key = value" into a list based on spaces.
-        key_value_list = [str.strip() for str in key_value_pair.split('=')]
+        keyValueList = [str.strip() for str in keyValuePair.split('=')]
 
         # In order to be valid, this must be a list of the form [key, value].
         # It must therefore have a length of 2.
-        if len(key_value_list) != 2:
-            return error_dict
+        if len(keyValueList) != 2:
+            return errorDict
 
         # Validate the key.
-        key = key_value_list[0]
-        if not is_valid_key(key):
-            return error_dict
+        key = keyValueList[0]
+        if not isValidKey(key):
+            return errorDict
 
         # Validate the value.
-        value = key_value_list[1]
-        if not is_valid_value(value):
-            return error_dict
+        value = keyValueList[1]
+        if not isValidValue(value):
+            return errorDict
 
         # No duplicate keys are allowed.
-        if key in out_dict:
-            return error_dict
+        if key in outDict:
+            return errorDict
 
         # The key / value pair seems valid! We can add it to our dictionary.
-        out_dict[key] = value
+        outDict[key] = value
 
-    return out_dict
+    return outDict
 
 
-def is_valid_key(input_string = ""):
+def isValidKey(inputString =""):
     """
     Returns true if and only if the given string is of nonzero length, and contains only alphanumeric characters,
     starting with a letter.
-    :param input_string: The string to test for validity.
+    :param inputString: The string to test for validity.
     :return: True iff input_string is a valid key.
     """
-    return len(input_string) > 0 and input_string.isalnum() and input_string[:1].isalpha()
+    return len(inputString) > 0 and inputString.isalnum() and inputString[:1].isalpha()
 
 
-def is_valid_value(input_string = ""):
+def isValidValue(inputString =""):
     """
     Returns true if and only if the given string is of nonzero length, and contains only alphanumeric characters.
-    :param input_string: The string to test for validity.
+    :param inputString: The string to test for validity.
     :return: True iff input_string is a valid value.
     """
-    return input_string.isalnum()
+    return inputString.isalnum()
 

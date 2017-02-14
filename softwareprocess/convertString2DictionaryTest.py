@@ -1,10 +1,16 @@
-from __future__ import print_function
+"""
+    Created on 2/11/2016
+
+    @author: Mitchell Price
+"""
 import unittest
 
-from convertString2Dictionary import convertString2Dictionary, is_valid_key, is_valid_value
+from convertString2Dictionary import convertString2Dictionary
+from convertString2Dictionary import isValidKey
+from convertString2Dictionary import isValidValue
 
 # All of the provided tests that are expected to complete successfully.
-given_NonErrorTests = [
+givenNonErrorTests = [
     {
         'input': 'abc%3D123',
         'expected': {'abc': '123'},
@@ -18,7 +24,7 @@ given_NonErrorTests = [
 ]
 
 # All of the provided tests that are expected to fail.
-given_ErrorTests = [
+givenErrorTests = [
     {
         'input':  'function%20%3D%20get_stars',     # Underscores are not allowed.
         'expected': {'error': 'true'},
@@ -47,7 +53,7 @@ given_ErrorTests = [
 ]
 
 # Tests for is_valid_key.
-key_validation_tests = [
+keyValidationTests = [
     {
         'input': 'aBc',
         'expected': True,
@@ -76,7 +82,7 @@ key_validation_tests = [
 ]
 
 # Tests for is_valid_value.
-value_validation_tests = [
+valueValidationTests = [
     {
         'input': 'aBc',
         'expected': True,
@@ -110,7 +116,7 @@ class TestConvertString2Dictionary(unittest.TestCase):
     TestConvertString2Dictionary contains tests for ConvertString2Dictionary and all helper methods.
     """
 
-    def run_test(self, function, test_data=[]):
+    def runTest(self, function, test_data=[]):
         """
         Will run a test of tests against a given function.
         :param function: The function to test.
@@ -120,29 +126,29 @@ class TestConvertString2Dictionary(unittest.TestCase):
         for test in test_data:
             self.assertEqual(function(test['input']), test['expected'])
 
-    def test_given_non_error(self):
+    def testGivenNonError(self):
         """
         Test convertString2Dictionary against all provided tests that are expected to complete successfully.
         """
-        self.run_test(convertString2Dictionary, given_NonErrorTests)
+        self.runTest(convertString2Dictionary, givenNonErrorTests)
 
-    def test_given_error(self):
+    def testGivenError(self):
         """
         Test convertString2Dictionary against all provided tests that are expected to complete unsuccessfully.
         """
-        self.run_test(convertString2Dictionary, given_ErrorTests)
+        self.runTest(convertString2Dictionary, givenErrorTests)
 
-    def test_key_validation(self):
+    def testKeyValidation(self):
         """
         Test is_valid_key.
         """
-        self.run_test(is_valid_key, key_validation_tests)
+        self.runTest(isValidKey, keyValidationTests)
 
-    def test_value_validation(self):
+    def testValueValidation(self):
         """
         Test is_valid_value.
         """
-        self.run_test(is_valid_value, value_validation_tests)
+        self.runTest(isValidValue, valueValidationTests)
 
 if __name__ == '__main__':
     unittest.main()
