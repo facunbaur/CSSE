@@ -1,5 +1,9 @@
 """
-    Created on 2/11/2016
+    convertString2DictionaryTest.py contains unit tests for testing
+    convertString2Dictionary and its helper methods.
+
+    Created on 2/11/2017
+    Last Modified on 2/13/2017
 
     @author: Mitchell Price
 """

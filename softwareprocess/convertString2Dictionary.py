@@ -1,5 +1,10 @@
 """
-    Created on 2/11/2016
+    convertString2Dictionary.py contains convertString2Dictionary,
+    which will convert a valid percent-encoded input string to a
+    dictionary, along with various helper functions.
+
+    Created on 2/11/2017
+    Last Modified on 2/13/2017
 
     @author: Mitchell Price
 """
