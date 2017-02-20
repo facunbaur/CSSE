@@ -66,7 +66,17 @@ class Sample(object):
     
     def integrate(self, lowBound, highBound, n, f):
         pass
-        
+
+    def getCoefficient(self, index, numPartitions):
+        """
+        getCoefficient returns the coefficient for the indexth element of the partitions.
+        If this is the first or last coefficient, this is 1. Otherwise, it alternates between 2 and 4.
+        :param index: Which element of the partitions to calculate the coefficient for, from 0 (the first partition)
+        up to numPartitions (inclusive).
+        :param numPartitions: The number of partitions to break the function into.
+        :return:
+        """
+        pass
         
     
         
