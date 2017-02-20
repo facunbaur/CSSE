@@ -335,3 +335,8 @@ class SampleTest(unittest.TestCase):
     def test600_010_ShouldCalculateSimpson1PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
         self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 1), 960, 4)
+
+    # oldBound = lowBound. Expect a return of 0
+    def test600_020_ShouldCalculateSimpson0Case(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 0, 5, mySample.testingF, 1), 0, 4)
