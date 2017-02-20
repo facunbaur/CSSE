@@ -84,9 +84,9 @@ class Sample(object):
         w = (highBound - lowBound) / s
         total = 0.0
         for i in range(0, s+1):
-            total += 
+            total += self.f(lowBound + w * i, n)
 
-        pass
+        return (w / 3) * total
 
     def getCoefficient(self, index, numPartitions):
         """
