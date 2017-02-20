@@ -263,6 +263,6 @@ class SampleTest(unittest.TestCase):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(0, 8), 1)
 
-    def test500_010_ShouldCalculateCoefficientHigh(self):
+    def test500_020_ShouldCalculateCoefficientHigh(self):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(8, 8), 1)
