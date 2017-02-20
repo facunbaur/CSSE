@@ -295,3 +295,10 @@ class SampleTest(unittest.TestCase):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(7, 8), 2)
 
+    def test500_031_ShouldCalculateCoefficient1Partition0(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(0, 1), 1)
+
+    def test500_031_ShouldCalculateCoefficient1Partition1(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(1, 1), 1)
