@@ -259,10 +259,12 @@ class SampleTest(unittest.TestCase):
 # Sad path
 #            none ... index, numPartitions are pre-validated
 
-    def test500_010_ShouldCalculateCoefficientLow(self):
+    def test500_011_ShouldCalculateCoefficientLow(self):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(0, 8), 1)
 
-    def test500_020_ShouldCalculateCoefficientHigh(self):
+    def test500_012_ShouldCalculateCoefficientHigh(self):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(8, 8), 1)
+
+
