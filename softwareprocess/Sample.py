@@ -84,7 +84,7 @@ class Sample(object):
         w = (highBound - lowBound) / s
         total = 0.0
         for i in range(0, s+1):
-            total += f(lowBound + w * i, n)
+            total += self.getCoefficient(i, s) * f(lowBound + w * i, n)
 
         return (w / 3) * total
 

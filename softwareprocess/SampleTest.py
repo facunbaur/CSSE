@@ -345,13 +345,16 @@ class SampleTest(unittest.TestCase):
     #
     # Simpson calculates (6/3) (f(0, 5) + 2f(6, 5) + 4f(12, 5) + 2f(18, 5) + f(24, 5)) =
     # 2 (0 + 2*30 + 4*60 + 2*90 + 120) = 2 (0 + 60 + 240 + 180 + 120) = 2 * 600 = 1200
-    def test600_030_ShouldCalculateSimpsion2PartitionCase(self):
+    def test600_030_ShouldCalculateSimpson4PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 2), 960, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 4), 1200, 4)
 
     # W = 24 / 8 = 3
     #
     # Simpson calculates (3/3) (f(0, 5) + 2f(3, 5) + 4f(6, 5) + 2f(9, 5) + 4f(12, 5)
     #                           + 2f(15, 5) + 4f(18, 5) + 2f(21, 5) + f(24, 5)) =
     # 1 (0 + 2*15 + 4*30 + 2*45 + 4*60 + 2*75 + 4*90 + 2*105 + 120) =
-    #    30 + 120 + 90 + 240 + 150 + 360 + 210 + 120 =
+    #    30 + 120 + 90 + 240 + 150 + 360 + 210 + 120 = 1320
+    def test600_040_ShouldCalculateSimpson8PartitionCase(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 8), 1320, 4)
