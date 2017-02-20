@@ -81,6 +81,11 @@ class Sample(object):
         :param s:           integer .GE. 1 mandatory validated
         :return: float, the integral of f, on s partitions
         """
+        w = (highBound - lowBound) / s
+        total = 0.0
+        for i in range(0, s+1):
+            total += 
+
         pass
 
     def getCoefficient(self, index, numPartitions):
