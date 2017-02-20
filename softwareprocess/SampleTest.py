@@ -3,6 +3,7 @@ import softwareprocess.Sample as SM
 import math
 
 
+
 class SampleTest(unittest.TestCase):
 
     def setUp(self):
@@ -302,3 +303,35 @@ class SampleTest(unittest.TestCase):
     def test500_031_ShouldCalculateCoefficient1Partition1(self):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(1, 1), 1)
+
+
+# 600 calculateSimpson
+# Analysis
+#
+#     inputs
+#        lowBound -> numeric mandatory validated
+#        highBound -> numeric .GE. lowBound mandatory validated
+#        n -> numeric .GE. 2 and .LT. 30 mandatory validated
+#        f -> function(self, float, integer) -> float mandatory validated
+#        s -> integer .GE. 1 mandatory validated
+#     outputs
+#        float, the integral of f, on s partitions
+#
+#     Happy path
+#        lowBound: nominal case     lowBound = 0
+#        highBound: nominal case    highBound = 24
+#                   boundary case   highBound = 0
+#        s:    nominal case         s = 2
+#                                   s = 4
+#              boundary case        s = 1
+#        n:    nominal case     n=5
+#        f:    nominal case      f(u, n) = u * n
+#     Sad path
+#        none ... will prevalidate
+
+    # W = 24 / 1 = 24
+    #
+    # Simpson calculates (24/3) (f(0, 5) + f(24,5)) = 8 (5 + 120) = 1000
+    def test600_010_ShouldCalculateSimpson1PartitionCase(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 1), 1000, 4)

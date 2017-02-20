@@ -67,6 +67,22 @@ class Sample(object):
     def integrate(self, lowBound, highBound, n, f):
         pass
 
+    def testingF(self, u, n):
+        return u * n
+
+    def calculateSimpson(self, lowBound, highBound, n, f, s):
+        """
+        calculateSimpson returns the integral of f with n degrees of freedom from lowBound to highBound, broken
+        into s partitions.
+        :param lowBound:    numeric mandatory validated
+        :param highBound:   numeric .GE. lowBound mandatory validated
+        :param n:           numeric .GE. 2 and .LT. 30 mandatory validated
+        :param f:           function(self, float, integer) -> float mandatory validated
+        :param s:           integer .GE. 1 mandatory validated
+        :return: float, the integral of f, on s partitions
+        """
+        pass
+
     def getCoefficient(self, index, numPartitions):
         """
         getCoefficient returns the coefficient for the indexth element of the partitions.
@@ -74,12 +90,17 @@ class Sample(object):
         :param index: Which element of the partitions to calculate the coefficient for, from 0 (the first partition)
         up to numPartitions (inclusive).
         :param numPartitions: The number of partitions to break the function into.
-        :return:
+        :return: An integer, one of 1, 2, or 4, the appropriate coefficient for this partition.
         """
+
+        # Special handling for the boundaries.
         if index == 0 or index == numPartitions:
             return 1
+
+        # Otherwise, every-other has coefficient 2, starting with index 1 (odd indices)
         if index % 2 == 1:
             return 2
+        # With all other coefficients (even indices) are 4.
         else:
             return 4
         
