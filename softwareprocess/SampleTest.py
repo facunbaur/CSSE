@@ -267,4 +267,31 @@ class SampleTest(unittest.TestCase):
         mySample = SM.Sample(self.nominalN)
         self.assertEquals(mySample.getCoefficient(8, 8), 1)
 
+    def test500_021_ShouldCalculateCoefficientNominal1(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(1, 8), 2)
+
+    def test500_022_ShouldCalculateCoefficientNominal2(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(2, 8), 4)
+
+    def test500_023_ShouldCalculateCoefficientNominal3(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(3, 8), 2)
+
+    def test500_024_ShouldCalculateCoefficientNominal4(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(4, 8), 4)
+
+    def test500_025_ShouldCalculateCoefficientNominal5(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(5, 8), 2)
+
+    def test500_026_ShouldCalculateCoefficientNominal6(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(6, 8), 4)
+
+    def test500_027_ShouldCalculateCoefficientNominal7(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(7, 8), 2)
 

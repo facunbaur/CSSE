@@ -78,6 +78,10 @@ class Sample(object):
         """
         if index == 0 or index == numPartitions:
             return 1
+        if index % 2 == 1:
+            return 2
+        else:
+            return 4
         
     
         
