@@ -76,7 +76,8 @@ class Sample(object):
         :param numPartitions: The number of partitions to break the function into.
         :return:
         """
-        pass
+        if index == 0 or index == numPartitions:
+            return 1
         
     
         

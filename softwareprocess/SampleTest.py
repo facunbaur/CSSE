@@ -244,6 +244,7 @@ class SampleTest(unittest.TestCase):
 #        integer, one of 1, 2, or 4
 # Happy path
 #    nominal cases:  getCoefficient(0, 8) -> 1
+#                    getCoefficient(8, 8) -> 1
 #                    getCoefficient(1, 8) -> 2
 #                    getCoefficient(2, 8) -> 4
 #                    getCoefficient(3, 8) -> 2
@@ -251,10 +252,17 @@ class SampleTest(unittest.TestCase):
 #                    getCoefficient(5, 8) -> 2
 #                    getCoefficient(6, 8) -> 4
 #                    getCoefficient(7, 8) -> 2
-#                    getCoefficient(8, 8) -> 1
-#   boundary cases:
-#                    getCoefficient(0, 1) -> 1
+#
+#    boundary cases: getCoefficient(0, 1) -> 1
 #                    getCoefficient(1, 1) -> 1
 #
 # Sad path
-#            none ... x is pre-validated
+#            none ... index, numPartitions are pre-validated
+
+    def test500_010_ShouldCalculateCoefficientLow(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(0, 8), 1)
+
+    def test500_010_ShouldCalculateCoefficientHigh(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertEquals(mySample.getCoefficient(8, 8), 1)
