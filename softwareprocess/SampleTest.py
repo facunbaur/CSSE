@@ -3,8 +3,10 @@ import softwareprocess.Sample as SM
 import math
 
 
-
 class SampleTest(unittest.TestCase):
+
+    def nominalF(self, u, n):
+        return u * n
 
     def setUp(self):
         self.nominalN  = 4
@@ -334,12 +336,12 @@ class SampleTest(unittest.TestCase):
     # Simpson calculates (24/3) (f(0, 5) + f(24,5)) = 8 (0 + 120) = 960
     def test600_010_ShouldCalculateSimpson1PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 1), 960, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 1), 960, 4)
 
     # oldBound = lowBound. Expect a return of 0
     def test600_020_ShouldCalculateSimpson0Case(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 0, 5, mySample.testingF, 1), 0, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 0, 5, self.nominalF, 1), 0, 4)
 
     # W = 24 / 4 = 6
     #
@@ -347,7 +349,7 @@ class SampleTest(unittest.TestCase):
     # 2 (0 + 2*30 + 4*60 + 2*90 + 120) = 2 (0 + 60 + 240 + 180 + 120) = 2 * 600 = 1200
     def test600_030_ShouldCalculateSimpson4PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 4), 1200, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 4), 1200, 4)
 
     # W = 24 / 8 = 3
     #
@@ -357,4 +359,4 @@ class SampleTest(unittest.TestCase):
     #    30 + 120 + 90 + 240 + 150 + 360 + 210 + 120 = 1320
     def test600_040_ShouldCalculateSimpson8PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 8), 1320, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 8), 1320, 4)

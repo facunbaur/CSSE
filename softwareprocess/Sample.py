@@ -67,8 +67,6 @@ class Sample(object):
     def integrate(self, lowBound, highBound, n, f):
         pass
 
-    def testingF(self, u, n):
-        return u * n
 
     def calculateSimpson(self, lowBound, highBound, n, f, s):
         """
