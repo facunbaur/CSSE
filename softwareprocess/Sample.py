@@ -31,7 +31,7 @@ class Sample(object):
             raise ValueError(functionName + "invalid tails")
         
         constant = self.calculateConstant(self.n)
-        integration = self.integrate(t, self.n, self.f)
+        integration = self.integrate(t, 0, self.n, self.f)
         if(tails == 1):
             result = constant * integration + 0.5
         else:
@@ -64,8 +64,15 @@ class Sample(object):
         result = base ** exponent
         return result
     
-    def integrate(self, highBound, n, f):
-        lowBound = 0
+    def integrate(self, lowBound, highBound, n, f):
+        """
+        integrate returns the integral of f  with n degrees of freedom from lowBound to highBound.
+        :param lowBound: The lower bound of the integration. Typically 0.
+        :param highBound: t, the upper bound of the integration. >= 0.
+        :param n: The number of degrees of freedom the distribution has.
+        :param f: The function to integrate over, with u and n.
+        :return: The area under f between lowBound and highBound, approximated with Simpson's rule.
+        """
         epsilon = 0.0001
         simpsonOld = 0.0
         simpsonNew = epsilon
@@ -73,6 +80,7 @@ class Sample(object):
         while abs(simpsonNew - simpsonOld) / simpsonNew > epsilon:
             simpsonOld = simpsonNew
             simpsonNew = self.calculateSimpson(lowBound, highBound, n, f, s)
+            s *= 2
         return simpsonNew
 
     def calculateSimpson(self, lowBound, highBound, n, f, s):
