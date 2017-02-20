@@ -331,7 +331,7 @@ class SampleTest(unittest.TestCase):
 
     # W = 24 / 1 = 24
     #
-    # Simpson calculates (24/3) (f(0, 5) + f(24,5)) = 8 (5 + 120) = 1000
+    # Simpson calculates (24/3) (f(0, 5) + f(24,5)) = 8 (0 + 120) = 960
     def test600_010_ShouldCalculateSimpson1PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 1), 1000, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 1), 960, 4)
