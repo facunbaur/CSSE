@@ -321,8 +321,8 @@ class SampleTest(unittest.TestCase):
 #        lowBound: nominal case     lowBound = 0
 #        highBound: nominal case    highBound = 24
 #                   boundary case   highBound = 0
-#        s:    nominal case         s = 2
-#                                   s = 4
+#        s:    nominal case         s = 4
+#                                   s = 8
 #              boundary case        s = 1
 #        n:    nominal case     n=5
 #        f:    nominal case      f(u, n) = u * n
@@ -340,3 +340,18 @@ class SampleTest(unittest.TestCase):
     def test600_020_ShouldCalculateSimpson0Case(self):
         mySample = SM.Sample(self.nominalN)
         self.assertAlmostEquals(mySample.calculateSimpson(0, 0, 5, mySample.testingF, 1), 0, 4)
+
+    # W = 24 / 4 = 6
+    #
+    # Simpson calculates (6/3) (f(0, 5) + 2f(6, 5) + 4f(12, 5) + 2f(18, 5) + f(24, 5)) =
+    # 2 (0 + 2*30 + 4*60 + 2*90 + 120) = 2 (0 + 60 + 240 + 180 + 120) = 2 * 600 = 1200
+    def test600_030_ShouldCalculateSimpsion2PartitionCase(self):
+        mySample = SM.Sample(self.nominalN)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, mySample.testingF, 2), 960, 4)
+
+    # W = 24 / 8 = 3
+    #
+    # Simpson calculates (3/3) (f(0, 5) + 2f(3, 5) + 4f(6, 5) + 2f(9, 5) + 4f(12, 5)
+    #                           + 2f(15, 5) + 4f(18, 5) + 2f(21, 5) + f(24, 5)) =
+    # 1 (0 + 2*15 + 4*30 + 2*45 + 4*60 + 2*75 + 4*90 + 2*105 + 120) =
+    #    30 + 120 + 90 + 240 + 150 + 360 + 210 + 120 =
