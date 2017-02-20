@@ -9,9 +9,9 @@
 """
 import unittest
 
-from convertString2Dictionary import convertString2Dictionary
-from convertString2Dictionary import isValidKey
-from convertString2Dictionary import isValidValue
+from softwareprocess.convertString2Dictionary import convertString2Dictionary
+from softwareprocess.convertString2Dictionary import isValidKey
+from softwareprocess.convertString2Dictionary import isValidValue
 
 # All of the provided tests that are expected to complete successfully.
 givenNonErrorTests = [
