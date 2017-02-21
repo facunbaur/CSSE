@@ -104,7 +104,7 @@ class Sample(object):
     def getCoefficient(self, index, numPartitions):
         """
         getCoefficient returns the coefficient for the indexth element of the partitions.
-        If this is the first or last coefficient, this is 1. Otherwise, it alternates between 2 and 4.
+        If this is the first or last coefficient, this is 1. Otherwise, it alternates between 4 and 2.
         :param index: Which element of the partitions to calculate the coefficient for, from 0 (the first partition)
         up to numPartitions (inclusive).
         :param numPartitions: The number of partitions to break the function into.
@@ -115,10 +115,10 @@ class Sample(object):
         if index == 0 or index == numPartitions:
             return 1
 
-        # Otherwise, every-other has coefficient 2, starting with index 1 (odd indices)
+        # Otherwise, every-other has coefficient 4, starting with index 1 (odd indices)
         if index % 2 == 1:
             return 4
-        # With all other coefficients (even indices) are 4.
+        # With all other coefficients (even indices) are 2.
         else:
             return 2
         
