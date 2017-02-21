@@ -1,3 +1,13 @@
+"""
+    SampleTest.py contains various methods for testing T-distributions
+    in Sample.py
+
+    Created on 2/20/2017
+    Last Modified on 2/21/2017
+
+    @author: Mitchell Price
+"""
+
 import unittest
 import softwareprocess.Sample as SM
 import math

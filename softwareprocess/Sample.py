@@ -1,3 +1,12 @@
+"""
+    Sample.py contains various methods for calculating T-distributions.
+
+    Created on 2/20/2017
+    Last Modified on 2/21/2017
+
+    @author: Mitchell Price
+"""
+
 import math
 class Sample(object):
 
