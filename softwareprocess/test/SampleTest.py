@@ -345,18 +345,18 @@ class SampleTest(unittest.TestCase):
 
     # W = 24 / 4 = 6
     #
-    # Simpson calculates (6/3) (f(0, 5) + 2f(6, 5) + 4f(12, 5) + 2f(18, 5) + f(24, 5)) =
-    # 2 (0 + 2*30 + 4*60 + 2*90 + 120) = 2 (0 + 60 + 240 + 180 + 120) = 2 * 600 = 1200
+    # Simpson calculates (6/3) (f(0, 5) + 4f(6, 5) + 2f(12, 5) + 4f(18, 5) + f(24, 5)) =
+    # 2 (0 + 4*30 + 2*60 + 4*90 + 120) = 2 (0 + 120 + 120 + 360 + 120) = 2 * 600 = 1200
     def test600_030_ShouldCalculateSimpson4PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 4), 1200, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 4), 1440, 4)
 
     # W = 24 / 8 = 3
     #
-    # Simpson calculates (3/3) (f(0, 5) + 2f(3, 5) + 4f(6, 5) + 2f(9, 5) + 4f(12, 5)
-    #                           + 2f(15, 5) + 4f(18, 5) + 2f(21, 5) + f(24, 5)) =
-    # 1 (0 + 2*15 + 4*30 + 2*45 + 4*60 + 2*75 + 4*90 + 2*105 + 120) =
-    #    30 + 120 + 90 + 240 + 150 + 360 + 210 + 120 = 1320
+    # Simpson calculates (3/3) (f(0, 5) + 4f(3, 5) + 2f(6, 5) + 4f(9, 5) + 2f(12, 5)
+    #                           + 4f(15, 5) + 2f(18, 5) + 4f(21, 5) + f(24, 5)) =
+    # 1 (0 + 4*15 + 2*30 + 4*45 + 2*60 + 4*75 + 2*90 + 4*105 + 120) =
+    #    60 + 60 + 180 + 120 + 300 + 180 + 420 + 120 = 1440
     def test600_040_ShouldCalculateSimpson8PartitionCase(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 8), 1320, 4)
+        self.assertAlmostEquals(mySample.calculateSimpson(0, 24, 5, self.nominalF, 8), 1440, 4)
