@@ -117,10 +117,10 @@ class Sample(object):
 
         # Otherwise, every-other has coefficient 2, starting with index 1 (odd indices)
         if index % 2 == 1:
-            return 2
+            return 4
         # With all other coefficients (even indices) are 4.
         else:
-            return 4
+            return 2
         
     
         

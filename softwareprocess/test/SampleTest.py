@@ -248,13 +248,13 @@ class SampleTest(unittest.TestCase):
 # Happy path
 #    nominal cases:  getCoefficient(0, 8) -> 1
 #                    getCoefficient(8, 8) -> 1
-#                    getCoefficient(1, 8) -> 2
-#                    getCoefficient(2, 8) -> 4
-#                    getCoefficient(3, 8) -> 2
-#                    getCoefficient(4, 8) -> 4
-#                    getCoefficient(5, 8) -> 2
-#                    getCoefficient(6, 8) -> 4
-#                    getCoefficient(7, 8) -> 2
+#                    getCoefficient(1, 8) -> 4
+#                    getCoefficient(2, 8) -> 2
+#                    getCoefficient(3, 8) -> 4
+#                    getCoefficient(4, 8) -> 2
+#                    getCoefficient(5, 8) -> 4
+#                    getCoefficient(6, 8) -> 2
+#                    getCoefficient(7, 8) -> 4
 #
 #    boundary cases: getCoefficient(0, 1) -> 1
 #                    getCoefficient(1, 1) -> 1
@@ -272,31 +272,31 @@ class SampleTest(unittest.TestCase):
 
     def test500_021_ShouldCalculateCoefficientNominal1(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(1, 8), 2)
+        self.assertEquals(mySample.getCoefficient(1, 8), 4)
 
     def test500_022_ShouldCalculateCoefficientNominal2(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(2, 8), 4)
+        self.assertEquals(mySample.getCoefficient(2, 8), 2)
 
     def test500_023_ShouldCalculateCoefficientNominal3(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(3, 8), 2)
+        self.assertEquals(mySample.getCoefficient(3, 8), 4)
 
     def test500_024_ShouldCalculateCoefficientNominal4(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(4, 8), 4)
+        self.assertEquals(mySample.getCoefficient(4, 8), 2)
 
     def test500_025_ShouldCalculateCoefficientNominal5(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(5, 8), 2)
+        self.assertEquals(mySample.getCoefficient(5, 8), 4)
 
     def test500_026_ShouldCalculateCoefficientNominal6(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(6, 8), 4)
+        self.assertEquals(mySample.getCoefficient(6, 8), 2)
 
     def test500_027_ShouldCalculateCoefficientNominal7(self):
         mySample = SM.Sample(self.nominalN)
-        self.assertEquals(mySample.getCoefficient(7, 8), 2)
+        self.assertEquals(mySample.getCoefficient(7, 8), 4)
 
     def test500_031_ShouldCalculateCoefficient1Partition0(self):
         mySample = SM.Sample(self.nominalN)
