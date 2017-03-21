@@ -286,5 +286,8 @@ class operationsTest(unittest.TestCase):
     #       The bulk of the testing for this is covered in tests 510 for degreeStringToDegrees
     #   Sad Path
     #       Non - String Value     'observation' : 20    -> 'error': 'observation is invalid', ValueError()
-    #       No Value                NONE -> 'error': '', ValueError()
-    #       negative value         'height': '-1.0' -> 'error': 'height is invalid', ValueError()
+    #       No Value                NONE -> 'error': 'mandatory information is missing', ValueError()
+    # Happy Path
+    def test420_010_ShouldHandleNominalValue(self):
+        input = {'observation': '45d30.0'}
+        self.assertAlmostEqual(adjust.extractObservation(input), 45.5, 5)
