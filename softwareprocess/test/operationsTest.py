@@ -241,4 +241,4 @@ class operationsTest(unittest.TestCase):
     # Happy Path
     def test410_010_ShouldGetDefaultValue(self):
         actual = adjust.extractHeight({})
-        self.assertAlmostEquals(actual, '0', 5)
+        self.assertAlmostEquals(actual, 0.0, 5)
