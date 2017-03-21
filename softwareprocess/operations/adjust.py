@@ -141,6 +141,10 @@ def extractTemperature(sighting):
     if 'temperature' not in sighting:
         return 72
 
+    if not isinstance(sighting['temperature'], basestring):
+        sighting['error'] = 'temperature is invalid'
+        raise ValueError()
+
     temperature = int(sighting['temperature'])
     return temperature
 
