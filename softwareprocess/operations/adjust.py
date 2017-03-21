@@ -97,7 +97,9 @@ def extractHeight(sighting):
         if not isinstance(heightStr, basestring):
             sighting['error'] = 'height is invalid'
             raise ValueError()
-        return float(sighting['height'])
+        try:
+            height = float(sighting['height'])
+        except ValueError
 
 
 def extractObservation(sighting):
