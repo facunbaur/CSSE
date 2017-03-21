@@ -170,3 +170,9 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             adjust.degreeStringToDegrees('45d-15.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+
+    def test510_740TooLargeY(self):
+        expectedString = "Number of minutes too large"
+        with self.assertRaises(ValueError) as context:
+            adjust.degreeStringToDegrees('45d60.0')
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
