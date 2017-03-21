@@ -345,3 +345,10 @@ class operationsTest(unittest.TestCase):
     def test430_040_ShouldExtractDefaultValue(self):
         actual = adjust.extractTemperature({})
         self.assertEqual(actual, 72)
+
+    # Sad Paths
+    def test430_910_ShouldHandleNonString(self):
+        input = {'temperature': 20}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'temperature is invalid')
