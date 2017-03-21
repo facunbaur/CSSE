@@ -64,6 +64,8 @@ def degreeStringToDegrees(degreeString):
     value = x + (y / 60)
     if value < 0.1 / 60:
         raise ValueError("Measurement too small")
+    elif value >= 90.0:
+        raise ValueError("Measurement too large")
     return value
 
 
