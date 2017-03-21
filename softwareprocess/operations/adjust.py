@@ -44,7 +44,7 @@ def calculateAltitude(observation, height, temperature, pressure, naturalHorizon
     if naturalHorizon:
         dip = (-0.97 * math.sqrt(height)) / 60.0
     refraction = (-0.00452 * pressure) / (273 + fahrenheitToCelsius(temperature)) / \
-                 math.tan(observation * math.PI * 180)
+                 math.tan(observation * math.pi * 180)
     return observation + dip + refraction
 
 def fahrenheitToCelsius(temp):
