@@ -15,4 +15,4 @@ def correct(sighting):
     :param sighting: A dictionary containing data on a star sighting.
     :return: The unmodified sighting.
     """
-    pass
+    return sighting
