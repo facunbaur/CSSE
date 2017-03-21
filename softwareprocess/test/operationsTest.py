@@ -273,3 +273,18 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractHeight(input)
         self.assertEqual(input['error'], 'height is invalid')
+
+    # 420 extractObservation
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     sighting, a dictionary containing 'observation', which should be a string
+    #                   representation of a non-negative numeric value.
+    #       outputs:    the numeric value represented.
+    #                   otherwise, sets the error field of the dictionary and raises value error.
+    #   Happy Path:
+    #       Nominal Value         '45d30.0'   -> 45.5
+    #       The bulk of the testing for this is covered in tests 510 for degreeStringToDegrees
+    #   Sad Path
+    #       Non - String Value     'observation' : 20    -> 'error': 'observation is invalid', ValueError()
+    #       No Value                NONE -> 'error': '', ValueError()
+    #       negative value         'height': '-1.0' -> 'error': 'height is invalid', ValueError()
