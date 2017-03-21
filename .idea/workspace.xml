@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32c35fe7-3d25-479e-9412-78c3ad105f23" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/softwareprocess/operations/adjust.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/softwareprocess/operations/correct.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/softwareprocess/operations/locate.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/softwareprocess/operations/predict.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/softwareprocess/operations/adjust.py" afterPath="$PROJECT_DIR$/softwareprocess/operations/adjust.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="predict.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="predict.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/softwareprocess/operations/predict.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -84,11 +81,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="adjust.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="adjust.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+            <state relative-caret-position="975">
+              <caret line="107" column="109" lean-forward="false" selection-start-line="107" selection-start-column="109" selection-end-line="107" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -120,10 +117,10 @@
         <option value="$PROJECT_DIR$/softwareprocess/SampleTest.py" />
         <option value="$PROJECT_DIR$/softwareprocess/Sample.py" />
         <option value="$PROJECT_DIR$/softwareprocess/test/SampleTest.py" />
-        <option value="$PROJECT_DIR$/softwareprocess/operations/adjust.py" />
         <option value="$PROJECT_DIR$/softwareprocess/operations/locate.py" />
         <option value="$PROJECT_DIR$/softwareprocess/operations/correct.py" />
         <option value="$PROJECT_DIR$/softwareprocess/operations/predict.py" />
+        <option value="$PROJECT_DIR$/softwareprocess/operations/adjust.py" />
       </list>
     </option>
   </component>
@@ -536,7 +533,8 @@
     <MESSAGE value="Temporarily disable failing tests." />
     <MESSAGE value="Re-enable acceptance tests." />
     <MESSAGE value="Add template functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add template functions." />
+    <MESSAGE value="Add method stubs for operations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add method stubs for operations." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -737,14 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/softwareprocess/operations/locate.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -765,6 +755,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="107" column="109" lean-forward="false" selection-start-line="107" selection-start-column="109" selection-end-line="107" selection-end-column="109" />
           <folding />
         </state>
       </provider>
