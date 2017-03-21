@@ -93,6 +93,10 @@ def extractHeight(sighting):
     if 'height' not in sighting:
         return 0.0
     else:
+        heightStr = sighting['height']
+        if not isinstance(heightStr, basestring):
+            sighting['error'] = 'height is invalid'
+            raise ValueError()
         return float(sighting['height'])
 
 
