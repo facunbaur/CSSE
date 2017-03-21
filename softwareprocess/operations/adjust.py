@@ -54,6 +54,8 @@ def degreeStringToDegrees(degreeString):
         raise ValueError("Too many 'd' delimiters")
     dIndex = degreeString.index('d')
     x = float(degreeString[:dIndex])
+    if x < 0:
+        raise ValueError("Negative number of degrees")
     y = float(degreeString[dIndex+1:])
     return x + (y / 60)
 
