@@ -90,7 +90,9 @@ def extractHeight(sighting):
     :return: If input is valid, a numeric value, the height at which the observation was taken.
     Otherwise, the sighting's error field will be set accordingly, and a ValueError will be raised.
     """
-    pass
+    if 'height' not in sighting:
+        return 0.0
+    return None
 
 
 def extractObservation(sighting):
