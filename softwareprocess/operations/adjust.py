@@ -92,7 +92,8 @@ def extractHeight(sighting):
     """
     if 'height' not in sighting:
         return 0.0
-    return float(height)
+    else:
+        return float(sighting['height'])
 
 
 def extractObservation(sighting):

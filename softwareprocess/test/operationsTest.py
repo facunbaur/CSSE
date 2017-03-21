@@ -254,3 +254,10 @@ class operationsTest(unittest.TestCase):
     def test410_040_ShouldHandleHighValue(self):
         actual = adjust.extractHeight({'height': '999999.9'})
         self.assertAlmostEquals(actual, 999999.9, 5)
+
+    # Sad Paths
+    def test410_910_ShouldHandleNonStringValue(self):
+        input = {'height': 1}
+        with self.assertRaises(ValueError):
+            adjust.extractHeight(input)
+        self.assertEqual(input['error'], 'height is invalid')
