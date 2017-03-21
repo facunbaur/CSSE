@@ -352,3 +352,9 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractTemperature(input)
         self.assertEqual(input['error'], 'temperature is invalid')
+
+    def test430_920_ShouldHandleNonIntegerString(self):
+        input = {'temperature': '20.0'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'temperature is invalid')
