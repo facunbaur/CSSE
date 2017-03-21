@@ -99,7 +99,10 @@ def extractHeight(sighting):
             raise ValueError()
         try:
             height = float(sighting['height'])
-        except ValueError
+        except ValueError:
+            sighting['error'] = 'height is invalid'
+            raise ValueError()
+        return height
 
 
 def extractObservation(sighting):

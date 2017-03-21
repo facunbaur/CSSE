@@ -33,9 +33,12 @@
       <file leaf-file-name="adjust.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="101" column="25" lean-forward="false" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="240">
+              <caret line="104" column="21" lean-forward="false" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
+              <folding>
+                <marker date="1490073018044" expanded="true" signature="3617:4426" ph="..." />
+                <marker date="1490073018044" expanded="true" signature="4069:4426" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -425,9 +428,6 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests_(TDD) - 2017.03.20 at 23h 49m 23s.xml">
-      <configuration name="All Tests (TDD)" configurationId="tests" />
-    </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.03.20 at 23h 51m 55s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
@@ -453,6 +453,9 @@
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.03.21 at 00h 09m 06s.xml">
+      <configuration name="All Tests (TDD)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="All_Tests_(TDD) - 2017.03.21 at 00h 10m 07s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
   </component>
@@ -563,7 +566,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1605">
           <caret line="107" column="109" lean-forward="false" selection-start-line="107" selection-start-column="109" selection-end-line="107" selection-end-column="109" />
-          <folding />
+          <folding>
+            <marker date="1490073018044" expanded="true" signature="3617:4426" ph="..." />
+            <marker date="1490073018044" expanded="true" signature="4069:4426" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -801,9 +807,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="101" column="25" lean-forward="false" selection-start-line="101" selection-start-column="25" selection-end-line="101" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="240">
+          <caret line="104" column="21" lean-forward="false" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
+          <folding>
+            <marker date="1490073018044" expanded="true" signature="3617:4426" ph="..." />
+            <marker date="1490073018044" expanded="true" signature="4069:4426" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
