@@ -115,6 +115,10 @@ def extractObservation(sighting):
     :return: If input is valid, a numeric value, the observation taken.
     Otherwise, the sighting's error field will be set accordingly, and a ValueError will be raised.
     """
+    if 'observation' not in sighting:
+        sighting['error'] = 'mandatory information is missing'
+        raise ValueError()
+
     if not isinstance(sighting['observation'], basestring):
         sighting['error'] = 'observation is invalid'
         raise ValueError()
