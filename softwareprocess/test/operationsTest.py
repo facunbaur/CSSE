@@ -311,3 +311,37 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractObservation(input)
         self.assertEqual(input['error'], 'observation is invalid')
+
+    # 430 extractTemperature
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     sighting, a dictionary containing 'temperature', which should be a string
+    #                   representation of an integer between -20 and 120.
+    #       outputs:    the numeric value represented.
+    #                   otherwise, sets the error field of the dictionary and raises value error.
+    #   Happy Path:
+    #       Nominal Value         '70'   -> 70
+    #       Low Bound Value       '-20'  -> -20
+    #       High Value            '120'  -> 120
+    #       Default Value          NONE  -> 72
+    #   Sad Path
+    #       Non - String Value     'temperature' : 20    -> 'error': 'temperature is invalid', ValueError()
+    #       Non - Integer String   '5.0'   -> 'error' : 'temperature is invalid', ValueError()
+    #       Too Cold               '-21'   -> 'error' : 'temperature is invalid', ValueError()
+    #       Too Hot                '121'   -> 'error' : 'temperature is invalid', ValueError()
+    # Happy Path
+    def test430_010_ShouldExtractNominalValue(self):
+        actual = adjust.extractTemperature({'temperature': '70'})
+        self.assertEqual(actual, 70)
+
+    def test430_020_ShouldExtractLowValue(self):
+        actual = adjust.extractTemperature({'temperature': '70'})
+        self.assertEqual(actual, -20)
+
+    def test430_030_ShouldExtractHighValue(self):
+        actual = adjust.extractTemperature({'temperature': '70'})
+        self.assertEqual(actual, 120)
+
+    def test430_040_ShouldExtractDefaultValue(self):
+        actual = adjust.extractTemperature({})
+        self.assertEqual(actual, 72)
