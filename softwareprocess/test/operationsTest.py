@@ -358,3 +358,15 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractTemperature(input)
         self.assertEqual(input['error'], 'temperature is invalid')
+
+    def test430_920_ShouldHandleTooCold(self):
+        input = {'temperature': '-21'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'temperature is invalid')
+
+    def test430_920_ShouldHandleTooHot(self):
+        input = {'temperature': '121'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'temperature is invalid')
