@@ -150,6 +150,9 @@ def extractTemperature(sighting):
     except ValueError:
         sighting['error'] = 'temperature is invalid'
         raise ValueError()
+    if temperature < 20 or temperature > 120:
+        sighting['error'] = 'temperature is invalid'
+        raise ValueError()
     return temperature
 
 
