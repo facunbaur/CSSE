@@ -176,3 +176,9 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError) as context:
             adjust.degreeStringToDegrees('45d60.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+
+    def test510_750TooSmallValue(self):
+        expectedString = "Measurement too small"
+        with self.assertRaises(ValueError) as context:
+            adjust.degreeStringToDegrees('0d0.0')
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
