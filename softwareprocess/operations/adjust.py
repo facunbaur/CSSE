@@ -33,7 +33,7 @@ def adjust(sighting):
         pressure = extractPressure(sighting)
         naturalHorizon = extractNaturalHorizon(sighting)
     except ValueError:
-        return input
+        return sighting
     altitude = degreesToDegreeString(calculateAltitude(observation, height, temperature, pressure, naturalHorizon))
     sighting['altitude'] = altitude
     return sighting
