@@ -35,8 +35,8 @@ def adjust(sighting):
     except ValueError:
         return input
     altitude = degreesToDegreeString(calculateAltitude(observation, height, temperature, pressure, naturalHorizon))
-    input['altitude'] = altitude
-    return input
+    sighting['altitude'] = altitude
+    return sighting
 
 
 def calculateAltitude(observation, height, temperature, pressure, naturalHorizon):
