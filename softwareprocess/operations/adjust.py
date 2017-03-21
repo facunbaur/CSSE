@@ -61,7 +61,10 @@ def degreeStringToDegrees(degreeString):
         raise ValueError("Negative number of minutes")
     elif y >= 60.0:
         raise ValueError("Number of minutes too large")
-    return x + (y / 60)
+    value = x + (y / 60)
+    if value < 1.0 / 60:
+        raise ValueError("Measurement too small")
+    return value
 
 
 def degreesToDegreeString(degrees):
