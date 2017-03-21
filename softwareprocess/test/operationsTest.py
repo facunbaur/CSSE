@@ -335,11 +335,11 @@ class operationsTest(unittest.TestCase):
         self.assertEqual(actual, 70)
 
     def test430_020_ShouldExtractLowValue(self):
-        actual = adjust.extractTemperature({'temperature': '70'})
+        actual = adjust.extractTemperature({'temperature': '-20'})
         self.assertEqual(actual, -20)
 
     def test430_030_ShouldExtractHighValue(self):
-        actual = adjust.extractTemperature({'temperature': '70'})
+        actual = adjust.extractTemperature({'temperature': '120'})
         self.assertEqual(actual, 120)
 
     def test430_040_ShouldExtractDefaultValue(self):
