@@ -165,7 +165,7 @@ class operationsTest(unittest.TestCase):
             adjust.degreeStringToDegrees('-15d30.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
-    def test510_720NegativeX(self):
+    def test510_730NegativeY(self):
         expectedString = "Negative number of minutes"
         with self.assertRaises(ValueError) as context:
             adjust.degreeStringToDegrees('45d-15.0')

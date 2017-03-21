@@ -57,6 +57,8 @@ def degreeStringToDegrees(degreeString):
     if x < 0:
         raise ValueError("Negative number of degrees")
     y = float(degreeString[dIndex+1:])
+    if y < 0:
+        raise ValueError("Negative number of minutes")
     return x + (y / 60)
 
 
