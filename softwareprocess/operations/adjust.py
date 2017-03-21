@@ -163,7 +163,11 @@ def extractPressure(sighting):
     :return: If input is valid, an integer value, the pressure at which the observation was taken.
     Otherwise, the sighting's error field will be set accordingly, and a ValueError will be raised.
     """
-    pass
+    if 'pressure' not in sighting:
+        return 1010
+
+    pressure = int(sighting['pressure'])
+    return pressure
 
 
 def extractNaturalHorizon(sighting):
