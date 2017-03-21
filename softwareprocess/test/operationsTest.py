@@ -221,3 +221,24 @@ class operationsTest(unittest.TestCase):
     def test520_040HighXHighY(self):
         actual = adjust.degreesToDegreeString(89.9983333333)
         self.assertEqual(actual, '89d59.9')
+
+    # 410 extractHeight
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     sighting, a dictionary containing 'height', which should be a string
+    #                   representation of a non-negative numeric value.
+    #       outputs:    the non-negative numeric value represented.
+    #                   otherwise, sets the error field of the dictionary and raises value error.
+    #   Happy Path
+    #       No Value                NONE    -> 0
+    #       Low Value               '0'     -> 0
+    #       Nominal Value         '25.2'    -> 25.2
+    #       High Value            '999999.9'-> 999999.9
+    #   Sad Path
+    #       Non - String Value     'height' : 20    -> 'error': 'height is invalid', ValueError()
+    #       String, non numeric    'height' : 'abc' -> 'error': 'height is invalid', ValueError()
+    #       negative value         'height': '-1.0' -> 'error': 'height is invalid', ValueError()
+    # Happy Path
+    def test410_010_ShouldGetDefaultValue(self):
+        actual = adjust.extractHeight({})
+        self.assertAlmostEquals(actual, '0', 5)
