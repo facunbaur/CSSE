@@ -242,3 +242,15 @@ class operationsTest(unittest.TestCase):
     def test410_010_ShouldGetDefaultValue(self):
         actual = adjust.extractHeight({})
         self.assertAlmostEquals(actual, 0.0, 5)
+
+    def test410_020_ShouldHandleLowValue(self):
+        actual = adjust.extractHeight({'height': '0'})
+        self.assertAlmostEquals(actual, 0.0, 5)
+
+    def test410_030_ShouldHandleNominalValue(self):
+        actual = adjust.extractHeight({'height': '25.2'})
+        self.assertAlmostEquals(actual, 25.2, 5)
+
+    def test410_040_ShouldHandleHighValue(self):
+        actual = adjust.extractHeight({'height': '999999.9'})
+        self.assertAlmostEquals(actual, 999999.9, 5)
