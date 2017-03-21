@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="32c35fe7-3d25-479e-9412-78c3ad105f23" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/softwareprocess/operations/adjust.py" afterPath="$PROJECT_DIR$/softwareprocess/operations/adjust.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/softwareprocess/test/operationsTest.py" afterPath="$PROJECT_DIR$/softwareprocess/test/operationsTest.py" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,8 +34,8 @@
       <file leaf-file-name="adjust.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="119" column="26" lean-forward="false" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
+            <state relative-caret-position="292">
+              <caret line="121" column="26" lean-forward="false" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -44,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/softwareprocess/test/operationsTest.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="292">
-              <caret line="299" column="76" lean-forward="false" selection-start-line="299" selection-start-column="76" selection-end-line="299" selection-end-column="76" />
+              <caret line="299" column="64" lean-forward="false" selection-start-line="299" selection-start-column="64" selection-end-line="299" selection-end-column="64" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -425,9 +426,6 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_Tests_(TDD) - 2017.03.21 at 00h 06m 45s.xml">
-      <configuration name="All Tests (TDD)" configurationId="tests" />
-    </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.03.21 at 00h 08m 26s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
@@ -453,6 +451,9 @@
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
     <history-entry file="All_Tests_(TDD) - 2017.03.21 at 00h 17m 57s.xml">
+      <configuration name="All Tests (TDD)" configurationId="tests" />
+    </history-entry>
+    <history-entry file="All_Tests_(TDD) - 2017.03.21 at 00h 18m 36s.xml">
       <configuration name="All Tests (TDD)" configurationId="tests" />
     </history-entry>
   </component>
@@ -792,7 +793,7 @@
     <entry file="file://$PROJECT_DIR$/softwareprocess/test/operationsTest.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="292">
-          <caret line="299" column="76" lean-forward="false" selection-start-line="299" selection-start-column="76" selection-end-line="299" selection-end-column="76" />
+          <caret line="299" column="64" lean-forward="false" selection-start-line="299" selection-start-column="64" selection-end-line="299" selection-end-column="64" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -801,8 +802,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/softwareprocess/operations/adjust.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="119" column="26" lean-forward="false" selection-start-line="119" selection-start-column="26" selection-end-line="119" selection-end-column="26" />
+        <state relative-caret-position="292">
+          <caret line="121" column="26" lean-forward="false" selection-start-line="121" selection-start-column="26" selection-end-line="121" selection-end-column="26" />
           <folding />
         </state>
       </provider>

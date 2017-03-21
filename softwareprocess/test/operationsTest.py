@@ -297,4 +297,4 @@ class operationsTest(unittest.TestCase):
         input = {'observation': 20}
         with self.assertRaises(ValueError):
             adjust.extractObservation(input)
-        self.assertEqual(input['error'], 'mandatory information is missing')
+        self.assertEqual(input['error'], 'observation is invalid')
