@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="32c35fe7-3d25-479e-9412-78c3ad105f23" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/softwareprocess/operations/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/softwareprocess/test/operationsTest.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/.idea/" />
@@ -75,8 +73,8 @@
       <file leaf-file-name="operationsTest.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/softwareprocess/test/operationsTest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+            <state relative-caret-position="240">
+              <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -549,7 +547,8 @@
     <MESSAGE value="Add template functions." />
     <MESSAGE value="Add method stubs for operations." />
     <MESSAGE value="Add method stubs for helper functions." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add method stubs for helper functions." />
+    <MESSAGE value="Add unittest class." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add unittest class." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -792,8 +791,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/softwareprocess/test/operationsTest.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
+        <state relative-caret-position="240">
+          <caret line="16" column="45" lean-forward="false" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
