@@ -149,5 +149,8 @@ class operationsTest(unittest.TestCase):
 
     # Sad Path
     def test510_700FailIfNoD(self):
-        with self.assertRaises(ValueError):
+        expectedString = "No 'd' delimiter"
+        with self.assertRaises(ValueError) as context:
             adjust.degreeStringToDegrees('85')
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+
