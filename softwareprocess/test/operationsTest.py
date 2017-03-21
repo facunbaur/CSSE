@@ -435,7 +435,7 @@ class operationsTest(unittest.TestCase):
     #   Input-output Analysis:
     #       inputs:     sighting, a dictionary containing 'horizon', which should be a string
     #                   containing (case-insensitive) 'natural' or 'artificial'
-    #       outputs:
+    #       outputs:    True iff 'horizon' is non-existent or natural, False if otherwise and no error.
     #                   otherwise, sets the error field of the dictionary and raises value error.
     #   Happy Path:
     #       Nominal Value         'natural'    -> true
@@ -478,3 +478,32 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractNaturalHorizon(input)
         self.assertEqual(input['error'], 'horizon is invalid')
+
+    # 460 calculateAltitude
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:         observation: validated float
+    #                       height:      validated float
+    #                       temperature: validated integer
+    #                       pressure:    validated integer
+    #                       naturalHorizon: validated boolean
+    #      outputs:         The appropriate altitude
+    #   Happy Path:
+    #       Nominal Values
+    #           (30.025, 19.0, 85, 1000, false) -> 29.998333...
+    #           (45.25333, 6.0, 71, 1010, true) -> 45.198333...
+    #           (42.0, 0.0, 72, 1010, true)     -> 41.98333....
+    #   Sad Path
+    #       None
+    # Happy Path
+    def test460_010_ShouldCalculateNominal1(self):
+        actual = adjust.calculateAltitude(30.025, 19.0, 85, 1000, False)
+        self.assertAlmostEqual(actual, 29.998333, 5)
+
+    def test460_020_ShouldCalculateNominal2(self):
+        actual = adjust.calculateAltitude(45.25333, 6.0, 71, 1010, True)
+        self.assertAlmostEqual(actual, 45.198333, 5)
+
+    def test460_030_ShouldCalculateNominal3(self):
+        actual = adjust.calculateAltitude(42.0, 0.0, 72, 1010, False)
+        self.assertAlmostEqual(actual, 41.983333, 5)
