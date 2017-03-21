@@ -138,7 +138,11 @@ def extractTemperature(sighting):
     :return: If input is valid, an integer value, the temperature at which the observation was taken.
     Otherwise, the sighting's error field will be set accordingly, and a ValueError will be raised.
     """
-    pass
+    if 'temperature' not in sighting:
+        return 72
+
+    temperature = int(sighting['temperature'])
+    return temperature
 
 
 def extractPressure(sighting):
