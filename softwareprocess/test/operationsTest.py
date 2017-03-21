@@ -305,3 +305,9 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractObservation(input)
         self.assertEqual(input['error'], 'mandatory information is missing')
+
+    def test420_930_ShouldHandleBadValue(self):
+        input = {'observation': '45d-3.0'}
+        with self.assertRaises(ValueError):
+            adjust.extractObservation(input)
+        self.assertEqual(input['error'], 'observation is invalid')
