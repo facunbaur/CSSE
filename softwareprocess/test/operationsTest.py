@@ -287,6 +287,7 @@ class operationsTest(unittest.TestCase):
     #   Sad Path
     #       Non - String Value     'observation' : 20    -> 'error': 'observation is invalid', ValueError()
     #       No Value                NONE -> 'error': 'mandatory information is missing', ValueError()
+    #       Bad Value               '45d-3.0'   -> 'error' : 'observation is invalid', ValueError()
     # Happy Path
     def test420_010_ShouldHandleNominalValue(self):
         input = {'observation': '45d30.0'}
@@ -298,3 +299,9 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractObservation(input)
         self.assertEqual(input['error'], 'observation is invalid')
+
+    def test420_920_ShouldHandleNoValue(self):
+        input = {}
+        with self.assertRaises(ValueError):
+            adjust.extractObservation(input)
+        self.assertEqual(input['error'], 'mandatory information is missing')
