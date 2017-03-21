@@ -102,6 +102,9 @@ def extractHeight(sighting):
         except ValueError:
             sighting['error'] = 'height is invalid'
             raise ValueError()
+        if height < 0:
+            sighting['error'] = 'height is invalid'
+            raise ValueError()
         return height
 
 
