@@ -48,7 +48,10 @@ def degreeStringToDegrees(degreeString):
     the number of degrees, and y is a numeric value, between 0 and 60, the number of minutes.
     :return: x + (y / 60), or will raise a value error if the given string is not formatted properly.
     """
-    pass
+    dIndex = degreeString.index('d')
+    x = float(degreeString[:dIndex])
+    y = float(degreeString[dIndex+1:])
+    return x + (y / 60)
 
 
 def degreesToDegreeString(degrees):
