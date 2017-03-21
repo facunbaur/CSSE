@@ -154,3 +154,9 @@ class operationsTest(unittest.TestCase):
             adjust.degreeStringToDegrees('85')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
+    def test510_710FailTooManyDs(self):
+        expectedString = "Too many 'd' delimiters"
+        with self.assertRaises(ValueError) as context:
+            adjust.degreeStringToDegrees('45dd30.0')
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+
