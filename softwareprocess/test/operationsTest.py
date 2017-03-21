@@ -419,13 +419,13 @@ class operationsTest(unittest.TestCase):
         self.assertEqual(input['error'], 'pressure is invalid')
 
     def test440_920_ShouldHandleTooLow(self):
-        input = {'temperature': '99'}
+        input = {'pressure': '99'}
         with self.assertRaises(ValueError):
             adjust.extractPressure(input)
         self.assertEqual(input['error'], 'pressure is invalid')
 
     def test440_920_ShouldHandleTooHigh(self):
-        input = {'temperature': '1101'}
+        input = {'pressure': '1101'}
         with self.assertRaises(ValueError):
             adjust.extractPressure(input)
         self.assertEqual(input['error'], 'pressure is invalid')
