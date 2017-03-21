@@ -122,7 +122,12 @@ def extractObservation(sighting):
     if not isinstance(sighting['observation'], basestring):
         sighting['error'] = 'observation is invalid'
         raise ValueError()
-    return degreeStringToDegrees(sighting['observation'])
+
+    try:
+        return degreeStringToDegrees(sighting['observation'])
+    except ValueError:
+        sighting['error'] = 'observation is invalid'
+        raise ValueError()
 
 
 
