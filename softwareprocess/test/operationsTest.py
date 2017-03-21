@@ -84,7 +84,7 @@ class operationsTest(unittest.TestCase):
     #                   where x is the amount of degrees, and y is the amount of minutes.
     #                   This value must be >= '0d0.1' and < '90d0.0'
     #
-    #       outputs:    sighting passed, unchanged.
+    #       outputs:    The value, in degrees.
     #   Happy Path
     #       nominal x, nominal y    '45d30.0'   -> 45.5
     #       nominal x, low y        '45d0.0'    -> 45.0
@@ -192,3 +192,32 @@ class operationsTest(unittest.TestCase):
     def test510_770TooLargeValue(self):
         with self.assertRaises(ValueError) as context:
             adjust.degreeStringToDegrees('45.0d0.0')
+
+    # 520 degreesToDegreesString
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     degreeString: validated degree.
+    #       outputs:    a string indicating the degree/minutes of the value.
+    #   Happy Path
+    #       Nominal x, Nominal y    45.5    -> '45d30.0'
+    #       Nominal x, Zero y       45.0    -> '45d0.0'
+    #       Low x, Nominal y        0.5     -> '0d30.0'
+    #       High x, High y       89.99833333     -> '89d59.9'
+    #   Sad Path
+    #       None
+    # Happy Path
+    def test520_010NominalXNominalY(self):
+        actual = adjust.degreesToDegreeString(45.5)
+        self.assertEqual(actual, '45d30.0')
+
+    def test520_020NominalXZeroY(self):
+        actual = adjust.degreesToDegreeString(45.0)
+        self.assertEqual(actual, '45d0.0')
+
+    def test520_030LowXNominalY(self):
+        actual = adjust.degreesToDegreeString(0.5)
+        self.assertEqual(actual, '0d30.0')
+
+    def test520_040HighXHighY(self):
+        actual = adjust.degreesToDegreeString(89.9983333333)
+        self.assertEqual(actual, '89d59.9')
