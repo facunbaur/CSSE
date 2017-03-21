@@ -53,7 +53,7 @@ def degreeStringToDegrees(degreeString):
     elif degreeString.count('d') > 1:
         raise ValueError("Too many 'd' delimiters")
     dIndex = degreeString.index('d')
-    x = float(degreeString[:dIndex])
+    x = int(degreeString[:dIndex])
     if x < 0:
         raise ValueError("Negative number of degrees")
     y = float(degreeString[dIndex+1:])
