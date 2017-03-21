@@ -40,7 +40,15 @@ def calculateAltitude(observation, height, temperature, pressure, naturalHorizon
     :param naturalHorizon: Boolean, True iff the horizon used was natural.
     :return: Numeric, the altitude (in degrees) of the star, after adjustment.
     """
-    pass
+    dip = 0
+    if naturalHorizon:
+        dip = (-0.97 * math.sqrt(height)) / 60.0
+    refraction = (-0.00452 * pressure) / (273 + fahrenheitToCelsius(temperature)) / \
+                 math.tan(observation * math.PI * 180)
+    return observation + dip + refraction
+
+def fahrenheitToCelsius(temp):
+    return (temp - 32) * 5/9
 
 
 def degreeStringToDegrees(degreeString):
