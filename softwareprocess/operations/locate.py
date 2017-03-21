@@ -15,5 +15,5 @@ def locate(sighting):
     :param sighting: A dictionary containing data on the star sighting.
     :return: The unmodified sighting.
     """
-    pass
+    return sighting
 
