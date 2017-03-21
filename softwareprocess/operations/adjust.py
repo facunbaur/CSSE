@@ -187,4 +187,18 @@ def extractNaturalHorizon(sighting):
     :return: If input is valid, a boolean value, indicating if the observation was made on a natural horizon.
     Otherwise, the sighting's error field will be set accordingly, and a ValueError will be raised.
     """
-    pass
+    if not 'horizon' in sighting:
+        return True
+
+    if not isinstance(sighting['horizon'], basestring):
+        sighting['error'] = 'horizon is invalid'
+        raise ValueError()
+
+    horizon = sighting['horizon'].lower()
+    if horizon == 'natural':
+        return True
+    elif horizon == 'artificial':
+        return False
+    else:
+        sighting['error'] = 'horizon is invalid'
+        raise ValueError()

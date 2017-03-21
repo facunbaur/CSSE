@@ -470,11 +470,11 @@ class operationsTest(unittest.TestCase):
     def test450_910_ShouldHandleNonString(self):
         input = {'horizon': 1}
         with self.assertRaises(ValueError):
-            adjust.extractPressure(input)
+            adjust.extractNaturalHorizon(input)
         self.assertEqual(input['error'], 'horizon is invalid')
 
     def test450_920_ShouldHandleInvalidString(self):
         input = {'horizon': 'natur'}
         with self.assertRaises(ValueError):
-            adjust.extractPressure(input)
+            adjust.extractNaturalHorizon(input)
         self.assertEqual(input['error'], 'horizon is invalid')
