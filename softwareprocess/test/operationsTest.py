@@ -146,5 +146,8 @@ class operationsTest(unittest.TestCase):
     def test510_100ShouldCalculateHighXHighY(self):
         actual = adjust.degreeStringToDegrees('89d59.9')
         self.assertAlmostEquals(actual, 89.99833333, 5)
-    # Sad Path
 
+    # Sad Path
+    def test510_700FailIfNoD(self):
+        with self.assertRaises(ValueError):
+            adjust.degreeStringToDegrees('85')
