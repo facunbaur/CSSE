@@ -26,7 +26,17 @@ def adjust(sighting):
         'altitude' - In the event of a success, the altitude corresponding to this sighting. Degrees/minutes string.
         'error' - In the event of an error, a string explaining the source of the error.
     """
-    pass
+    try:
+        observation = extractObservation(sighting)
+        height = extractHeight(sighting)
+        temperature = extractTemperature(sighting)
+        pressure = extractPressure(sighting)
+        naturalHorizon = extractNaturalHorizon(sighting)
+    except ValueError:
+        return input
+    altitude = degreesToDegreeString(calculateAltitude(observation, height, temperature, pressure, naturalHorizon))
+    input['altitude'] = altitude
+    return input
 
 
 def calculateAltitude(observation, height, temperature, pressure, naturalHorizon):
