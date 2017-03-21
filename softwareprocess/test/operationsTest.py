@@ -99,7 +99,6 @@ class operationsTest(unittest.TestCase):
     #   Sad Path
     #       no 'd'                  '85'        -> raise ValueError
     #       multiple 'd's           '45dd30.0'  -> raise ValueError
-    #       illegal characters      '45d&30.0'  -> raise ValueError
     #       negative x              '-15d30.0'  -> raise ValueError
     #       negative y              '45d-15.0'  -> raise ValueError
     #       too large y             '45d60.0'   -> raise ValueError
@@ -158,5 +157,11 @@ class operationsTest(unittest.TestCase):
         expectedString = "Too many 'd' delimiters"
         with self.assertRaises(ValueError) as context:
             adjust.degreeStringToDegrees('45dd30.0')
+        self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
+
+    def test510_720NegativeX(self):
+        expectedString = "Negative number of degrees"
+        with self.assertRaises(ValueError) as context:
+            adjust.degreeStringToDegrees('-15d30.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
