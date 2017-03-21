@@ -545,8 +545,6 @@ class operationsTest(unittest.TestCase):
     #           Expected altitude: '41d59.0'
     #
     #   Sad Path
-    #           Non - dictionary input
-    #           5   => {'error': 'input must be a dictionary'}
     #           Altitude given
     #           {'altitude': '0.1'} => {'error': 'altitude cannot be given in input'}
     #           Invalid observation
@@ -653,3 +651,15 @@ class operationsTest(unittest.TestCase):
         expected['error'] = 'horizon is invalid'
         actual = adjust.adjust(input)
         self.assertEqual(actual, expected)
+
+    def test400_960_ShouldHandleAltitudeGivenInInput(self):
+        input = {
+            'op': 'adjust',
+            'observation': '45d11.2',
+            'altitude': '5d11.2',
+        }
+        expected = copy.deepcopy(input)
+        expected['error'] = 'input must be a dictionary'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
