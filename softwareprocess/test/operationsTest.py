@@ -390,7 +390,7 @@ class operationsTest(unittest.TestCase):
     #       Too High               '1101'  -> 'error': 'pressure is invalid', ValueError()
     # Happy Path
     def test440_010_ShouldExtractNominalValue(self):
-        actual = adjust.extractPressure({'presssure': '1000'})
+        actual = adjust.extractPressure({'pressure': '1000'})
         self.assertEqual(actual, 1000)
 
     def test440_020_ShouldExtractLowValue(self):
@@ -398,7 +398,7 @@ class operationsTest(unittest.TestCase):
         self.assertEqual(actual, 100)
 
     def test440_030_ShouldExtractHighValue(self):
-        actual = adjust.extractPressure({'temperature': '1100'})
+        actual = adjust.extractPressure({'pressure': '1100'})
         self.assertEqual(actual, 1100)
 
     def test440_040_ShouldExtractDefaultValue(self):
