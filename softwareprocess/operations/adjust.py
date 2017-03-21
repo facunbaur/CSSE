@@ -27,7 +27,8 @@ def adjust(sighting):
         'error' - In the event of an error, a string explaining the source of the error.
     """
     if 'altitude' in sighting:
-        sighting['error'] = 'altitude can not be given in input'
+        sighting['error'] = 'altitude cannot be given in input'
+        return sighting
     try:
         observation = extractObservation(sighting)
         height = extractHeight(sighting)
