@@ -261,3 +261,9 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractHeight(input)
         self.assertEqual(input['error'], 'height is invalid')
+
+    def test410_920_ShouldHandleNonNumericStringValue(self):
+        input = {'height': 'abc'}
+        with self.assertRaises(ValueError):
+            adjust.extractHeight(input)
+        self.assertEqual(input['error'], 'height is invalid')
