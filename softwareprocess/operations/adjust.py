@@ -8,6 +8,8 @@
     @author: Mitchell Price
 """
 
+import math
+
 
 def adjust(sighting):
     """
@@ -76,7 +78,9 @@ def degreesToDegreeString(degrees):
     :param degrees: Numeric, an arc measurement.
     :return: The string representation of the degrees and minutes in the arc.
     """
-    pass
+    x = math.floor(degrees)
+    y = (degrees - x) * 60
+    return "%dd%0.1f" % (x, y)
 
 
 def extractHeight(sighting):
