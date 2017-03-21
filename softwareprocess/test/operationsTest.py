@@ -498,12 +498,12 @@ class operationsTest(unittest.TestCase):
     # Happy Path
     def test460_010_ShouldCalculateNominal1(self):
         actual = adjust.calculateAltitude(30.025, 19.0, 85, 1000, False)
-        self.assertAlmostEqual(actual, 29.998333, 3)
+        self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(29.998333))
 
     def test460_020_ShouldCalculateNominal2(self):
         actual = adjust.calculateAltitude(45.25333, 6.0, 71, 1010, True)
-        self.assertAlmostEqual(actual, 45.198333, 3)
+        self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(45.198333))
 
     def test460_030_ShouldCalculateNominal3(self):
         actual = adjust.calculateAltitude(42.0, 0.0, 72, 1010, False)
-        self.assertAlmostEqual(actual, 41.983333, 3)
+        self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(41.983333))
