@@ -1,4 +1,6 @@
 import unittest
+import copy
+
 import softwareprocess.operations.adjust as adjust
 import softwareprocess.operations.correct as correct
 import softwareprocess.operations.locate as locate
@@ -507,3 +509,147 @@ class operationsTest(unittest.TestCase):
     def test460_030_ShouldCalculateNominal3(self):
         actual = adjust.calculateAltitude(42.0, 0.0, 72, 1010, False)
         self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(41.983333))
+
+
+    # 400 adjust
+    #   Desired level of confidence: boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     observation: unvalidated, should be degree/Minute string, Mandatory.
+    #                   height:      unvalidated, should be float string, Optional
+    #                   temperature: unvalidated, should be float string, Optional
+    #                   pressure:    unvalidated, should be integer string, Optional
+    #                   horizon:     unvalidated, string, either 'natural', or 'artificial', Optional
+    #                   op: validated, string ('adjust')
+    #   Happy Path
+    #       Nominal Values
+    #           Test 1
+    #                   observation: '30d1.5'
+    #                   height: '19.0'
+    #                   pressure: '1000'
+    #                   horizon:  'artificial'
+    #                   op: 'adjust'
+    #                   temperature: '85'
+    #           Expected altitude: '29d59.9'
+    #           Test 2
+    #                   observation: '45d15.2'
+    #                   height: '6'
+    #                   pressure: '1010'
+    #                   horizon 'natural'
+    #                   temperature: '71'
+    #                   op 'adjust'
+    #                   extra: 'ignore me'
+    #           Expected altitude: '45d11.9'
+    #           Test 3
+    #                   observation: '42d0.0'
+    #                   op: 'adjust'
+    #           Expected altitude: '41d59.0'
+    #
+    #   Sad Path
+    #           Non - dictionary input
+    #           5   => {'error': 'input must be a dictionary'}
+    #           Altitude given
+    #           {'altitude': '0.1'} => {'error': 'altitude cannot be given in input'}
+    #           Invalid observation
+    #           {'observation': '0d0.0'} => {'error': 'operation is invalid'}
+    #           Invalid height
+    #           {'height' : '-10.0'} => {'error': 'height is invalid'}
+    #           Invalid pressure
+    #           {'pressure' : '99'} => {'error': 'pressure is invalid'}
+    #           Invalid temperature
+    #           {'temperature': '121'} => {'error' : 'temperature is invalid'}
+    #           Invalid  horizon
+    #           {'horizon': 'natura') => {'error' : 'horizon is invalid'}
+    def test400_010_ShouldAdjustNominal(self):
+        input = {
+            'observation': '30d1.5',
+            'height': '19.0',
+            'pressure': '1000',
+            'horizon':  'artificial',
+            'op': 'adjust',
+            'temperature': '85'
+        }
+        expected = copy.deepcopy(input)
+        expected['altitude'] = '29d59.9'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    def test400_020_ShouldAdjustNominalHandleExtraKey(self):
+        input = {
+            'observation': '45d15.2',
+            'height': '6',
+            'pressure': '1010',
+            'horizon':  'natural',
+            'op': 'adjust',
+            'temperature': '71',
+            'extra': 'ignoreme'
+        }
+        expected = copy.deepcopy(input)
+        expected['altitude'] = '45d11.9'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    def test400_030_ShouldAdjustNominalDefaultValues(self):
+        input = {
+            'observation': '42d0.0',
+            'op': 'adjust'
+        }
+        expected = copy.deepcopy(input)
+        expected['altitude'] = '41d59.0'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    # Sad Paths
+
+    def test400_910_ShouldHandleInvalidObservation(self):
+        input = {
+            'op': 'adjust',
+            'observation': '0d0.0'
+        }
+        expected = copy.deepcopy(input)
+        expected['error'] = 'observation is invalid'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    def test400_920_ShouldHandleInvalidHeight(self):
+        input = {
+            'op': 'adjust',
+            'observation': '45d11.2',
+            'height': '-10.0'
+        }
+        expected = copy.deepcopy(input)
+        expected['error'] = 'height is invalid'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    def test400_930_ShouldHandleInvalidPressure(self):
+        input = {
+            'op': 'adjust',
+            'observation': '45d11.2',
+            'pressure': '99'
+        }
+        expected = copy.deepcopy(input)
+        expected['error'] = 'pressure is invalid'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    def test400_940_ShouldHandleInvalidTemperature(self):
+        input = {
+            'op': 'adjust',
+            'observation': '45d11.2',
+            'temperature': '121'
+        }
+        expected = copy.deepcopy(input)
+        expected['error'] = 'temperature is invalid'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
+
+    def test400_950_ShouldHandleInvalidHorizon(self):
+        input = {
+            'op': 'adjust',
+            'observation': '45d11.2',
+            'horizon': 'natura'
+        }
+        expected = copy.deepcopy(input)
+        expected['error'] = 'horizon is invalid'
+        actual = adjust.adjust(input)
+        self.assertEqual(actual, expected)
