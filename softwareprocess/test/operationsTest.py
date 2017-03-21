@@ -370,3 +370,62 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractTemperature(input)
         self.assertEqual(input['error'], 'temperature is invalid')
+
+    # 440 extractPressure
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     sighting, a dictionary containing 'pressure', which should be a string
+    #                   representation of an integer between 100 and 1100.
+    #       outputs:    the numeric value represented.
+    #                   otherwise, sets the error field of the dictionary and raises value error.
+    #   Happy Path:
+    #       Nominal Value         '1000'   -> 1000
+    #       Low Bound Value       '100'  -> 100
+    #       High Value            '1100'  -> 1100
+    #       Default Value          NONE  -> 1010
+    #   Sad Path
+    #       Non - String Value     1000    -> 'error': 'pressure is invalid', ValueError()
+    #       Non - Integer String   '1000.0'-> 'error': 'pressure is invalid', ValueError()
+    #       Too Low                '99'    -> 'error': 'pressure is invalid', ValueError()
+    #       Too High               '1101'  -> 'error': 'pressure is invalid', ValueError()
+    # Happy Path
+    def test440_010_ShouldExtractNominalValue(self):
+        actual = adjust.extractPressure({'presssure': '1000'})
+        self.assertEqual(actual, 1000)
+
+    def test440_020_ShouldExtractLowValue(self):
+        actual = adjust.extractPressure({'pressure': '100'})
+        self.assertEqual(actual, 100)
+
+    def test440_030_ShouldExtractHighValue(self):
+        actual = adjust.extractPressure({'temperature': '1100'})
+        self.assertEqual(actual, 1100)
+
+    def test440_040_ShouldExtractDefaultValue(self):
+        actual = adjust.extractPressure({})
+        self.assertEqual(actual, 1010)
+
+    # Sad Paths
+    def test440_910_ShouldHandleNonString(self):
+        input = {'pressure': 1000}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
+
+    def test440_920_ShouldHandleNonIntegerString(self):
+        input = {'pressure': '1000.0'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
+
+    def test440_920_ShouldHandleTooLow(self):
+        input = {'temperature': '99'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
+
+    def test440_920_ShouldHandleTooHigh(self):
+        input = {'temperature': '1101'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
