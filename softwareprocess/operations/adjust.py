@@ -115,7 +115,7 @@ def extractObservation(sighting):
     :return: If input is valid, a numeric value, the observation taken.
     Otherwise, the sighting's error field will be set accordingly, and a ValueError will be raised.
     """
-    pass
+    return degreeStringToDegrees(sighting['observation'])
 
 
 def extractTemperature(sighting):

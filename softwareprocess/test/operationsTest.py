@@ -291,3 +291,10 @@ class operationsTest(unittest.TestCase):
     def test420_010_ShouldHandleNominalValue(self):
         input = {'observation': '45d30.0'}
         self.assertAlmostEqual(adjust.extractObservation(input), 45.5, 5)
+
+    # Sad Paths
+    def test420_910_ShouldHandleNonStringValue(self):
+        input = {'observation': 20}
+        with self.assertRaises(ValueError):
+            adjust.extractObservation(input)
+        self.assertEqual(input['error'], 'mandatory information is missing')
