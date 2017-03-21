@@ -429,3 +429,52 @@ class operationsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             adjust.extractPressure(input)
         self.assertEqual(input['error'], 'pressure is invalid')
+
+    # 450 extractNaturalHorizon
+    #   Desired level of confidence:    boundary value analysis
+    #   Input-output Analysis:
+    #       inputs:     sighting, a dictionary containing 'horizon', which should be a string
+    #                   containing (case-insensitive) 'natural' or 'artificial'
+    #       outputs:
+    #                   otherwise, sets the error field of the dictionary and raises value error.
+    #   Happy Path:
+    #       Nominal Value         'natural'    -> true
+    #                             'artificial' -> false
+    #       Mixed Case            'nAtUrAL'    -> true
+    #                             'ARTIFICIAL' -> false
+    #       Default Value          NONE        -> true
+    #   Sad Path
+    #       Non - String Value     1000    -> 'error': 'horizon is invalid', ValueError()
+    #       Invalid String         'natur'    -> 'error': 'horizon is invalid', ValueError()
+    # Happy Path
+    def test450_010_ShouldHandleNominalTrue(self):
+        actual = adjust.extractNaturalHorizon({'horizon': 'natural'})
+        self.assertTrue(actual)
+
+    def test450_020_ShouldHandleNominalFalse(self):
+        actual = adjust.extractNaturalHorizon({'horizon': 'artificial'})
+        self.assertFalse(actual)
+
+    def test450_030_ShouldHandleMixedTrue(self):
+        actual = adjust.extractNaturalHorizon({'horizon': 'NaTuRaL'})
+        self.assertTrue(actual)
+
+    def test450_040_ShouldHandleMixedFalse(self):
+        actual = adjust.extractNaturalHorizon({'horizon': 'ARTIFICIAL'})
+        self.assertFalse(actual)
+
+    def test450_050_ShouldHandleDefault(self):
+        actual = adjust.extractNaturalHorizon({})
+        self.assertTrue(actual)
+
+    def test450_910_ShouldHandleNonString(self):
+        input = {'horizon': 1}
+        with self.assertRaises(ValueError):
+            adjust.extractPressure(input)
+        self.assertEqual(input['error'], 'horizon is invalid')
+
+    def test450_920_ShouldHandleInvalidString(self):
+        input = {'horizon': 'natur'}
+        with self.assertRaises(ValueError):
+            adjust.extractPressure(input)
+        self.assertEqual(input['error'], 'horizon is invalid')
