@@ -1,5 +1,6 @@
 import unittest
 import softwareprocess.operations.correct as correct
+import softwareprocess.operations.locate as locate
 
 
 class operationsTest(unittest.TestCase):
@@ -40,12 +41,12 @@ class operationsTest(unittest.TestCase):
     def test200_010_ShouldPassPlainDictionary(self):
         sighting = dict()
         sighting['op'] = 'locate'
-        actual = correct.correct(sighting)
+        actual = locate.locate(sighting)
         self.assertEqual(actual, sighting, 'Should return unmodified')
 
     def test200_020_ShouldPassDictionaryWithAddedEntry(self):
         sighting = dict()
         sighting['op'] = 'locate'
         sighting['extra'] = 'ignore me'
-        actual = correct.correct(sighting)
+        actual = locate.locate(sighting)
         self.assertEqual(actual, sighting, 'Should return unmodified')
