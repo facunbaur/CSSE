@@ -406,26 +406,26 @@ class operationsTest(unittest.TestCase):
         self.assertEqual(actual, 1010)
 
     # Sad Paths
-    # def test440_910_ShouldHandleNonString(self):
-    #     input = {'pressure': 1000}
-    #     with self.assertRaises(ValueError):
-    #         adjust.extractTemperature(input)
-    #     self.assertEqual(input['error'], 'pressure is invalid')
-    #
-    # def test440_920_ShouldHandleNonIntegerString(self):
-    #     input = {'pressure': '1000.0'}
-    #     with self.assertRaises(ValueError):
-    #         adjust.extractTemperature(input)
-    #     self.assertEqual(input['error'], 'pressure is invalid')
-    #
-    # def test440_920_ShouldHandleTooLow(self):
-    #     input = {'temperature': '99'}
-    #     with self.assertRaises(ValueError):
-    #         adjust.extractTemperature(input)
-    #     self.assertEqual(input['error'], 'pressure is invalid')
-    #
-    # def test440_920_ShouldHandleTooHigh(self):
-    #     input = {'temperature': '1101'}
-    #     with self.assertRaises(ValueError):
-    #         adjust.extractTemperature(input)
-    #     self.assertEqual(input['error'], 'pressure is invalid')
+    def test440_910_ShouldHandleNonString(self):
+        input = {'pressure': 1000}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
+
+    def test440_920_ShouldHandleNonIntegerString(self):
+        input = {'pressure': '1000.0'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
+
+    def test440_920_ShouldHandleTooLow(self):
+        input = {'temperature': '99'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')
+
+    def test440_920_ShouldHandleTooHigh(self):
+        input = {'temperature': '1101'}
+        with self.assertRaises(ValueError):
+            adjust.extractTemperature(input)
+        self.assertEqual(input['error'], 'pressure is invalid')

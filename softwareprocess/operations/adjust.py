@@ -166,7 +166,17 @@ def extractPressure(sighting):
     if 'pressure' not in sighting:
         return 1010
 
-    pressure = int(sighting['pressure'])
+    if not isinstance(sighting['pressure'], basestring):
+        sighting['error'] = 'pressure is invalid'
+        raise ValueError()
+    try:
+        pressure = int(sighting['pressure'])
+    except ValueError:
+        sighting['error'] = 'pressure is invalid'
+        raise ValueError()
+    if pressure < 100 or pressure > 1100:
+        sighting['error'] = 'pressure is invalid'
+        raise ValueError()
     return pressure
 
 
