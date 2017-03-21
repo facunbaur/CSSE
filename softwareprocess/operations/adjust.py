@@ -145,7 +145,11 @@ def extractTemperature(sighting):
         sighting['error'] = 'temperature is invalid'
         raise ValueError()
 
-    temperature = int(sighting['temperature'])
+    try:
+        temperature = int(sighting['temperature'])
+    except ValueError:
+        sighting['error'] = 'temperature is invalid'
+        raise ValueError()
     return temperature
 
 
