@@ -659,7 +659,7 @@ class operationsTest(unittest.TestCase):
             'altitude': '5d11.2',
         }
         expected = copy.deepcopy(input)
-        expected['error'] = 'input must be a dictionary'
+        expected['error'] = 'altitude cannot be given in input'
         actual = adjust.adjust(input)
         self.assertEqual(actual, expected)
 
