@@ -1,7 +1,7 @@
-import softwareprocess.operations.adjust as adjust
-import softwareprocess.operations.correct as correct
-import softwareprocess.operations.locate as locate
-import softwareprocess.operations.predict as predict
+import operations.adjust as adjust
+import operations.correct as correct
+import operations.locate as locate
+import operations.predict as predict
 
 def dispatch(values=None):
 
