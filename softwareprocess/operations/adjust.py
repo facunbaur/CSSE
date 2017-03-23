@@ -113,20 +113,18 @@ def extractHeight(sighting):
     """
     if 'height' not in sighting:
         return 0.0
-    else:
-        heightStr = sighting['height']
-        if not isinstance(heightStr, basestring):
-            sighting['error'] = 'height is invalid'
-            raise ValueError()
-        try:
-            height = float(sighting['height'])
-        except ValueError:
-            sighting['error'] = 'height is invalid'
-            raise ValueError()
-        if height < 0:
-            sighting['error'] = 'height is invalid'
-            raise ValueError()
-        return height
+    elif not isinstance(sighting['height'], basestring):
+        sighting['error'] = 'height is invalid'
+        raise ValueError()
+    try:
+        height = float(sighting['height'])
+    except ValueError:
+        sighting['error'] = 'height is invalid'
+        raise ValueError()
+    if height < 0:
+        sighting['error'] = 'height is invalid'
+        raise ValueError()
+    return height
 
 
 def extractObservation(sighting):
@@ -139,8 +137,7 @@ def extractObservation(sighting):
     if 'observation' not in sighting:
         sighting['error'] = 'mandatory information is missing'
         raise ValueError()
-
-    if not isinstance(sighting['observation'], basestring):
+    elif not isinstance(sighting['observation'], basestring):
         sighting['error'] = 'observation is invalid'
         raise ValueError()
 
@@ -161,8 +158,7 @@ def extractTemperature(sighting):
     """
     if 'temperature' not in sighting:
         return 72
-
-    if not isinstance(sighting['temperature'], basestring):
+    elif not isinstance(sighting['temperature'], basestring):
         sighting['error'] = 'temperature is invalid'
         raise ValueError()
 
@@ -186,10 +182,10 @@ def extractPressure(sighting):
     """
     if 'pressure' not in sighting:
         return 1010
-
-    if not isinstance(sighting['pressure'], basestring):
+    elif not isinstance(sighting['pressure'], basestring):
         sighting['error'] = 'pressure is invalid'
         raise ValueError()
+
     try:
         pressure = int(sighting['pressure'])
     except ValueError:
@@ -210,8 +206,7 @@ def extractNaturalHorizon(sighting):
     """
     if not 'horizon' in sighting:
         return True
-
-    if not isinstance(sighting['horizon'], basestring):
+    elif not isinstance(sighting['horizon'], basestring):
         sighting['error'] = 'horizon is invalid'
         raise ValueError()
 
