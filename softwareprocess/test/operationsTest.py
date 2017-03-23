@@ -1,6 +1,7 @@
 import unittest
 import copy
 
+import softwareprocess.dispatch as dispatch
 import softwareprocess.operations.adjust as adjust
 import softwareprocess.operations.correct as correct
 import softwareprocess.operations.locate as locate
@@ -663,3 +664,37 @@ class operationsTest(unittest.TestCase):
         actual = adjust.adjust(input)
         self.assertEqual(actual, expected)
 
+    # Acceptance tests
+    def test500_010_ShouldDispatchToAdjust(self):
+        input = {
+            'observation': '42d0.0',
+            'op': 'adjust'
+        }
+        expected = copy.deepcopy(input)
+        expected['altitude'] = '41d59.0'
+        actual = dispatch.dispatch(input)
+        self.assertEqual(actual, expected)
+
+    def test500_020_ShouldDispatchToCorrect(self):
+        input = {
+            'op': 'correct'
+        }
+        expected = copy.deepcopy(input)
+        actual = dispatch.dispatch(input)
+        self.assertEqual(actual, expected)
+
+    def test500_030_ShouldDispatchToLocate(self):
+        input = {
+            'op': 'locate'
+        }
+        expected = copy.deepcopy(input)
+        actual = dispatch.dispatch(input)
+        self.assertEqual(actual, expected)
+
+    def test500_040_ShouldDispatchToPredict(self):
+        input = {
+            'op': 'predict'
+        }
+        expected = copy.deepcopy(input)
+        actual = dispatch.dispatch(input)
+        self.assertEqual(actual, expected)
