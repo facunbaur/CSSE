@@ -76,15 +76,15 @@ def degreeStringToDegrees(degreeString):
     elif degreeString.count('d') > 1:
         raise ValueError("Too many 'd' delimiters")
     dIndex = degreeString.index('d')
-    x = int(degreeString[:dIndex])
-    if x < 0:
+    degrees = int(degreeString[:dIndex])
+    if degrees < 0:
         raise ValueError("Negative number of degrees")
-    y = float(degreeString[dIndex+1:])
-    if y < 0:
+    minutes = float(degreeString[dIndex+1:])
+    if minutes < 0:
         raise ValueError("Negative number of minutes")
-    elif y >= 60.0:
+    elif minutes >= 60.0:
         raise ValueError("Number of minutes too large")
-    value = x + (y / 60)
+    value = degrees + (minutes / 60)
     if value < 0.1 / 60:
         raise ValueError("Measurement too small")
     elif value >= 90.0:
