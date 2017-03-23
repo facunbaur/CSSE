@@ -1,3 +1,8 @@
+import softwareprocess.operations.adjust as adjust
+import softwareprocess.operations.correct as correct
+import softwareprocess.operations.locate as locate
+import softwareprocess.operations.predict as predict
+
 def dispatch(values=None):
 
     #Validate parm
@@ -11,13 +16,13 @@ def dispatch(values=None):
 
     #Perform designated function
     if(values['op'] == 'adjust'):
-        return values    #<-------------- replace this with your implementation
+        return adjust.adjust(values)    #<-------------- replace this with your implementation
     elif(values['op'] == 'predict'):
-        return values    #This calculation is stubbed out
+        return predict.predict(values)    #This calculation is stubbed out
     elif(values['op'] == 'correct'):
-        return values    #This calculation is stubbed out
+        return correct.correct(values)    #This calculation is stubbed out
     elif(values['op'] == 'locate'):
-        return values    #This calculation is stubbed out
+        return locate.locate(values)    #This calculation is stubbed out
     else:
         values['error'] = 'op is not a legal operation'
         return values
