@@ -698,3 +698,21 @@ class operationsTest(unittest.TestCase):
         expected = copy.deepcopy(input)
         actual = dispatch.dispatch(input)
         self.assertEqual(actual, expected)
+
+    # Sad Paths
+    def test500_010_ShouldHandleNoInput(self):
+        expected = {'error': 'parameter is missing'}
+        self.assertEqual(dispatch.dispatch(), expected)
+
+    def test500_020_ShouldHandleNonDictInput(self):
+        expected = {'error': 'parameter is not a dictionary'}
+        self.assertEqual(dispatch.dispatch(1), expected)
+
+    def test500_030_ShouldHandleNoOp(self):
+        expected = {'error': 'no op  is specified'}
+        self.assertEqual(dispatch.dispatch({}), expected)
+
+    def test500_040_ShouldHandleInvalidOp(self):
+        input = {'op': 'not a real op'}
+        expected = {'op': 'not a real op', 'error': 'op is not a legal operation'}
+        self.assertEqual(dispatch.dispatch(input), expected)
