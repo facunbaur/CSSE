@@ -62,7 +62,8 @@ class predictUnitTest(unittest.TestCase):
     #   Missing date, return default value.
     # SadPath
     #   date is not a string
-    #   date is not 3 '-' separated fields
+    #   date has < 3 fields
+    #   date has > 3 fields
     #   a date range is too large.
     #   year is before 2001
     def test_020_010_ShouldExtractValidDate(self):
@@ -76,3 +77,13 @@ class predictUnitTest(unittest.TestCase):
         expected = datetime.date(2001, 01, 01)
         actual = predict.extractDate(test_input)
         self.assertEqual(actual, expected, 'Should extract default date')
+
+    # SadPaths
+    def test_020_710_ShouldHandleNonStringDate(self):
+        test_input = {'date': 17}
+        expected = {'date': 17, 'error': 'invalid date'}
+        actual = predict.extractDate(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle non string date')
+
+

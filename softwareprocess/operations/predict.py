@@ -113,6 +113,9 @@ def extractDate(sighting):
     if 'date' not in sighting:
         return datetime.date(2001, 01, 01)
     dateStr = sighting['date']
+    if not isinstance(dateStr, basestring):
+        sighting['error'] = 'invalid date'
+        return None
     fields = dateStr.split('-')
     return datetime.date(int(fields[0]), int(fields[1]), int(fields[2]))
 
