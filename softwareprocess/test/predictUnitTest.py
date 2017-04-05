@@ -145,3 +145,11 @@ class predictUnitTest(unittest.TestCase):
         expected = datetime.time(0, 0, 0)
         actual = predict.extractTime(test_input)
         self.assertEqual(actual, expected, 'Should extract default time')
+
+    # SadPath
+    def test_030_710_ShouldHandleNonStringTime(self):
+        test_input = {'time': 17}
+        expected = {'time': 17, 'error': 'invalid time'}
+        actual = predict.extractTime(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle a non-string time')
