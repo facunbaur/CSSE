@@ -22,13 +22,13 @@ class predictUnitTest(unittest.TestCase):
         self.assertEqual(actual, expected, 'Should extract lowercase body')
 
     def test_010_020_shouldExtractBodyUppercase(self):
-        test_input = {'body': 'betelgeuse'}
+        test_input = {'body': 'BETELGEUSE'}
         expected = {'sha': '270d59.1', 'declination': '7d24.3'}
         actual = predict.extractBody(test_input)
         self.assertEqual(actual, expected, 'Should extract uppercase body')
 
     def test_010_030_shouldExtractBodyMixedcase(self):
-        test_input = {'body': 'betelgeuse'}
+        test_input = {'body': 'BeTeLGeUsE'}
         expected = {'sha': '270d59.1', 'declination': '7d24.3'}
         actual = predict.extractBody(test_input)
         self.assertEqual(actual, expected, 'Should extract mixedcase body')
