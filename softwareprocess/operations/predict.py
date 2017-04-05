@@ -87,6 +87,23 @@ def predict(sighting):
     :param sighting: A dictionary containing data on a star sighting.
     :return: The dictionary, with the latitude and longitude of the prediction fixed.
     """
+    # body = extractBody(sighting)
+    # if body is None:
+    #     return sighting
+    # date = extractDate(sighting)
+    # if date is None:
+    #     return sighting
+    # time = extractTime(sighting)
+    # if time is None:
+    #     return sighting
+    # if 'lat' in sighting:
+    #     sighting['error'] = 'lat key cannot be passed'
+    #     return sighting
+    # if 'long' in sighting:
+    #     sighting['error'] = 'long key cannot be passed'
+    #     return  sighting
+    # sighting['lat'] = body['declination']
+    # sighting['long'] = calcStarGHA(body['sha'], date, time)
     return sighting
 
 def extractBody(sighting):
