@@ -121,3 +121,27 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractDate(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle year before 2001')
+
+    # 030 extractTime
+    #
+    # HappyPath
+    #   Valid time.
+    #   Missing time, return default value.
+    # SadPath
+    #   time is not a string
+    #   time has < 3 fields
+    #   time has > 3 fields
+    #   time ranges are not strings of integers
+    #   a time range is too large.
+    # HappyPath
+    def test_030_010_ShouldExtractNominalTime(self):
+        test_input = {'time': '12:15:57'}
+        expected = datetime.time(12, 15, 57)
+        actual = predict.extractTime(test_input)
+        self.assertEqual(actual, expected, 'Should extract nominal time')
+
+    def test_030_020_ShouldExtractDefaultTime(self):
+        test_input = {}
+        expected = datetime.time(0, 0, 0)
+        actual = predict.extractTime(test_input)
+        self.assertEqual(actual, expected, 'Should extract default time')
