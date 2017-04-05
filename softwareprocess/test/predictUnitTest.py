@@ -1,4 +1,5 @@
 import unittest
+import datetime
 
 import softwareprocess.operations.predict as predict
 
@@ -63,5 +64,9 @@ class predictUnitTest(unittest.TestCase):
     #   date is not a string
     #   date is not 3 '-' separated fields
     #   a date range is too large.
+    #   year is before 2001
     def test_020_010_ShouldExtractValidDate(self):
-        test_input = {''}
+        test_input = {'date': '2011-3-15'}
+        expected = datetime.date(2011, 3, 15)
+        actual = predict.extractDate(test_input)
+        self.assertEqual(actual, expected, 'Should extract nominal date')

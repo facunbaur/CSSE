@@ -7,6 +7,7 @@
 
     @author: Mitchell Price
 """
+import datetime
 
 star_data = {
     'alpheratz': {'sha': '357d41.7', 'declination': '29d10.9'},
@@ -109,7 +110,9 @@ def extractDate(sighting):
     :param sighting: A dictionary containing data on a star sighting.
     :return: A datetime.date containing the date of the sighting.
     """
-    pass
+    dateStr = sighting['date']
+    dateStrFields = dateStr.split(dateStr)
+    return datetime.date()
 
 def extractTime(sighting):
     """
