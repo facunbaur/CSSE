@@ -147,4 +147,7 @@ def extractTime(sighting):
         sighting['error'] = 'invalid time'
         return None
     fields = timeStr.split(':')
+    if not len(fields) == 3:
+        sighting['error'] = 'invalid time'
+        return  None
     return datetime.time(int(fields[0]), int(fields[1]), int(fields[2]))

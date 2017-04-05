@@ -153,3 +153,17 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractTime(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle a non-string time')
+
+    def test_030_720_ShouldHandleTooFewFields(self):
+        test_input = {'time': '10:10'}
+        expected = {'time': '10:10', 'error': 'invalid time'}
+        actual = predict.extractTime(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle too few fields')
+
+    def test_030_730_ShouldHandleTooManyFields(self):
+        test_input = {'time': '10:10:10:10'}
+        expected = {'time': '10:10:10:10', 'error': 'invalid time'}
+        actual = predict.extractTime(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle too many fields')
