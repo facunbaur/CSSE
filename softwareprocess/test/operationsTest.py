@@ -6,7 +6,7 @@ import softwareprocess.operations.adjust as adjust
 import softwareprocess.operations.correct as correct
 import softwareprocess.operations.locate as locate
 import softwareprocess.operations.predict as predict
-
+import softwareprocess.operations.util
 
 
 class operationsTest(unittest.TestCase):
@@ -110,91 +110,91 @@ class operationsTest(unittest.TestCase):
     #       non-integer x           '45.0d30.0' -> raise ValueError
     # Happy Path
     def test510_010ShouldCalculateNominalXNominalY(self):
-        actual = adjust.degreeStringToDegrees('45d30.0')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('45d30.0')
         self.assertAlmostEquals(actual, 45.5, 5)
 
     def test510_020ShouldCalculateNominalXLowY(self):
-        actual = adjust.degreeStringToDegrees('45d0.0')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('45d0.0')
         self.assertAlmostEquals(actual, 45.0, 5)
 
     def test510_030ShouldCalculateNominalXIntegerY(self):
-        actual = adjust.degreeStringToDegrees('45d0')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('45d0')
         self.assertAlmostEquals(actual, 45.0, 5)
 
     def test510_040ShouldCalculateNominalXHighY(self):
-        actual = adjust.degreeStringToDegrees('45d59.9')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('45d59.9')
         self.assertAlmostEquals(actual, 45.99833333, 5)
 
     def test510_050ShouldCalculateLowXLowY(self):
-        actual = adjust.degreeStringToDegrees('0d0.1')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('0d0.1')
         self.assertAlmostEquals(actual, 0.001666667, 5)
 
     def test510_060ShouldCalculateLowXNominalY(self):
-        actual = adjust.degreeStringToDegrees('0d30.0')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('0d30.0')
         self.assertAlmostEquals(actual, 0.5, 5)
 
     def test510_070ShouldCalculateLowXHighY(self):
-        actual = adjust.degreeStringToDegrees('0d59.9')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('0d59.9')
         self.assertAlmostEquals(actual, 0.99833333, 5)
 
     def test510_080ShouldCalculateHighXLowY(self):
-        actual = adjust.degreeStringToDegrees('89d0.0')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('89d0.0')
         self.assertAlmostEquals(actual, 89.0, 5)
 
     def test510_090ShouldCalculateHighXNominalY(self):
-        actual = adjust.degreeStringToDegrees('89d30.0')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('89d30.0')
         self.assertAlmostEquals(actual, 89.5, 5)
 
     def test510_100ShouldCalculateHighXHighY(self):
-        actual = adjust.degreeStringToDegrees('89d59.9')
+        actual = softwareprocess.operations.util.degreeStringToDegrees('89d59.9')
         self.assertAlmostEquals(actual, 89.99833333, 5)
 
     # Sad Path
     def test510_700FailIfNoD(self):
         expectedString = "No 'd' delimiter"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('85')
+            softwareprocess.operations.util.degreeStringToDegrees('85')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_710FailTooManyDs(self):
         expectedString = "Too many 'd' delimiters"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('45dd30.0')
+            softwareprocess.operations.util.degreeStringToDegrees('45dd30.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_720NegativeX(self):
         expectedString = "Negative number of degrees"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('-15d30.0')
+            softwareprocess.operations.util.degreeStringToDegrees('-15d30.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_730NegativeY(self):
         expectedString = "Negative number of minutes"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('45d-15.0')
+            softwareprocess.operations.util.degreeStringToDegrees('45d-15.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_740TooLargeY(self):
         expectedString = "Number of minutes too large"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('45d60.0')
+            softwareprocess.operations.util.degreeStringToDegrees('45d60.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_750TooSmallValue(self):
         expectedString = "Measurement too small"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('0d0.0')
+            softwareprocess.operations.util.degreeStringToDegrees('0d0.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_760TooLargeValue(self):
         expectedString = "Measurement too large"
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('90d0.0')
+            softwareprocess.operations.util.degreeStringToDegrees('90d0.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_770TooLargeValue(self):
         with self.assertRaises(ValueError) as context:
-            adjust.degreeStringToDegrees('45.0d0.0')
+            softwareprocess.operations.util.degreeStringToDegrees('45.0d0.0')
 
     # 520 degreesToDegreesString
     #   Desired level of confidence:    boundary value analysis
@@ -210,19 +210,19 @@ class operationsTest(unittest.TestCase):
     #       None
     # Happy Path
     def test520_010NominalXNominalY(self):
-        actual = adjust.degreesToDegreeString(45.5)
+        actual = softwareprocess.operations.util.degreesToDegreeString(45.5)
         self.assertEqual(actual, '45d30.0')
 
     def test520_020NominalXZeroY(self):
-        actual = adjust.degreesToDegreeString(45.0)
+        actual = softwareprocess.operations.util.degreesToDegreeString(45.0)
         self.assertEqual(actual, '45d0.0')
 
     def test520_030LowXNominalY(self):
-        actual = adjust.degreesToDegreeString(0.5)
+        actual = softwareprocess.operations.util.degreesToDegreeString(0.5)
         self.assertEqual(actual, '0d30.0')
 
     def test520_040HighXHighY(self):
-        actual = adjust.degreesToDegreeString(89.9983333333)
+        actual = softwareprocess.operations.util.degreesToDegreeString(89.9983333333)
         self.assertEqual(actual, '89d59.9')
 
     # 410 extractHeight
@@ -501,15 +501,15 @@ class operationsTest(unittest.TestCase):
     # Happy Path
     def test460_010_ShouldCalculateNominal1(self):
         actual = adjust.calculateAltitude(30.025, 19.0, 85, 1000, False)
-        self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(29.998333))
+        self.assertEqual(softwareprocess.operations.util.degreesToDegreeString(actual), softwareprocess.operations.util.degreesToDegreeString(29.998333))
 
     def test460_020_ShouldCalculateNominal2(self):
         actual = adjust.calculateAltitude(45.25333, 6.0, 71, 1010, True)
-        self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(45.198333))
+        self.assertEqual(softwareprocess.operations.util.degreesToDegreeString(actual), softwareprocess.operations.util.degreesToDegreeString(45.198333))
 
     def test460_030_ShouldCalculateNominal3(self):
         actual = adjust.calculateAltitude(42.0, 0.0, 72, 1010, False)
-        self.assertEqual(adjust.degreesToDegreeString(actual), adjust.degreesToDegreeString(41.983333))
+        self.assertEqual(softwareprocess.operations.util.degreesToDegreeString(actual), softwareprocess.operations.util.degreesToDegreeString(41.983333))
 
 
     # 400 adjust
