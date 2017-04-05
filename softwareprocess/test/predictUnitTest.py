@@ -70,3 +70,9 @@ class predictUnitTest(unittest.TestCase):
         expected = datetime.date(2011, 3, 15)
         actual = predict.extractDate(test_input)
         self.assertEqual(actual, expected, 'Should extract nominal date')
+
+    def test_020_020_ShouldExtractDefaultDate(self):
+        test_input = {}
+        expected = datetime.date(2001, 01, 01)
+        actual = predict.extractDate(test_input)
+        self.assertEqual(actual, expected, 'Should extract default date')
