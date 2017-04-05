@@ -2,6 +2,7 @@ import unittest
 import datetime
 
 import softwareprocess.operations.predict as predict
+import softwareprocess.operations.util as util
 
 class predictUnitTest(unittest.TestCase):
 
@@ -193,3 +194,14 @@ class predictUnitTest(unittest.TestCase):
         self.assertEqual(predict.calcNumLeapYearsSince2001(2004), 0)
         self.assertEqual(predict.calcNumLeapYearsSince2001(2005), 1)
         self.assertEqual(predict.calcNumLeapYearsSince2001(2016), 3)
+
+    # 050 calcAriesGHAStartOfYear
+    #   2001 => 0
+    #   2016 => 100d4.8
+    def test_040_010_ShouldCalcAriesGHAStartOfYear(self):
+        actual = predict.calcAriesGHAStartOfYear(2001)
+        expected = util.degreeStringToDegrees('0d00.0')
+        self.assertAlmostEqual(actual, expected, 4)
+        actual = predict.calcAriesGHAStartOfYear(2016)
+        expected = util.degreeStringToDegrees('100d4.8')
+        self.assertAlmostEqual(actual, expected, 4)

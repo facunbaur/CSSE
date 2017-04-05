@@ -9,6 +9,8 @@
 """
 import datetime
 
+import softwareprocess.operations.util as util
+
 star_data = {
     'alpheratz': {'sha': '357d41.7', 'declination': '29d10.9'},
     'ankaa': {'sha': '353d14.1', 'declination': '-42d13.4'},
@@ -70,6 +72,9 @@ star_data = {
     'scheat': {'sha': '13d51.8', 'declination': '28d10.3'},
     'markab': {'sha': '13d36.7', 'declination': '15d17.6'}
 }
+
+initialAriesGHA = util.degreeStringToDegrees('100d42.6')
+ariesGHADecreasePerYear = util.degreeStringToDegrees('0d14.31667')
 
 def predict(sighting):
     """
@@ -163,3 +168,6 @@ def calcNumLeapYearsSince2001(year):
     :return: The number of leap years before the given year.
     """
     return (year - 2001) / 4
+
+def calcAriesGHAStartOfYear(year):
+    pass
