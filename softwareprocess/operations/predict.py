@@ -111,8 +111,8 @@ def extractDate(sighting):
     :return: A datetime.date containing the date of the sighting.
     """
     dateStr = sighting['date']
-    dateStrFields = dateStr.split(dateStr)
-    return datetime.date()
+    fields = dateStr.split('-')
+    return datetime.date(int(fields[0]), int(fields[1]), int(fields[2]))
 
 def extractTime(sighting):
     """
