@@ -227,3 +227,11 @@ def calcStarGHA(starSHA, date, time):
     gha = util.degreeStringToDegrees(starSHA, False) + calcAriesGHA(date, time)
     roundedGHA = gha - 360.0 * math.floor(gha / 360.0)
     return util.degreesToDegreeString(roundedGHA)
+
+def roundAngle(angle):
+    """
+    roundAngle will round an angle to be in the range [0, 360)
+    :param angle: The unrounded angle
+    :return: The rounded angle.
+    """
+    return angle - 360 * math.floor(angle/360.0)
