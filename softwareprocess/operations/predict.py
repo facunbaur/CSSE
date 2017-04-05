@@ -214,7 +214,7 @@ def calcAriesGHA(date, time):
     rotations = secondsSinceNewYears / earthRotationalPeriod
     rotation = rotations - math.floor(rotations)
     gha = rotation * 360.0 + calcAriesGHAStartOfYear(date.year)
-    return gha - 360.0 * math.floor(gha / 360.0)
+    return roundAngle(gha)
 
 def calcStarGHA(starSHA, date, time):
     """
@@ -225,7 +225,7 @@ def calcStarGHA(starSHA, date, time):
     :return: A degree string representation of the GHA.
     """
     gha = util.degreeStringToDegrees(starSHA, False) + calcAriesGHA(date, time)
-    roundedGHA = gha - 360.0 * math.floor(gha / 360.0)
+    roundedGHA = roundAngle(gha)
     return util.degreesToDegreeString(roundedGHA)
 
 def roundAngle(angle):
