@@ -86,6 +86,9 @@ def extractBody(sighting):
     :param sighting: A dictionary containing data on a star sighting.
     :return: A dictionary mapping 'sha' to the star's SHA, and 'declination' to the start's Declination.
     """
+    if not 'body' in sighting:
+        sighting['error'] = 'mandatory information is missing'
+        return None
     star = sighting['body'].lower()
     return star_data[star]
 
