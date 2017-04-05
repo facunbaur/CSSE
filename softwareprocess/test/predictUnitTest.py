@@ -5,7 +5,6 @@ import softwareprocess.operations.predict as predict
 class predictUnitTest(unittest.TestCase):
 
     # 010 extractBody
-    # Desired level of confidence: Boundary-Value analysis
     #
     # HappyPath
     #   correct body, all lowercase.
@@ -54,3 +53,15 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractBody(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle nonexistent star name')
+
+    # 020 extractDate
+    #
+    # HappyPath
+    #   Valid date.
+    #   Missing date, return default value.
+    # SadPath
+    #   date is not a string
+    #   date is not 3 '-' separated fields
+    #   a date range is too large.
+    def test_020_010_ShouldExtractValidDate(self):
+        test_input = {''}
