@@ -125,6 +125,9 @@ def extractDate(sighting):
     except Exception:
         sighting['error'] = 'invalid date'
         return None
+    if date.year < 2001:
+        sighting['error'] = 'invalid date'
+        return None
     return date
 
 def extractTime(sighting):

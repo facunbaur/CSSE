@@ -114,3 +114,10 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractDate(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle invalid fields')
+
+    def test_020_760_ShouldHandleYearBefore2001(self):
+        test_input = {'date': '2000-10-10'}
+        expected = {'date': '2000-10-10', 'error': 'invalid date'}
+        actual = predict.extractDate(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle year before 2001')
