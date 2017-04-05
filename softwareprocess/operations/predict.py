@@ -155,3 +155,11 @@ def extractTime(sighting):
     except Exception:
         sighting['error'] = 'invalid time'
         return None
+
+def calcNumLeapYearsSince2001(year):
+    """
+    calcNumLeapYearsSince2001 will determine how many leap years occurred before the given year.
+    :param year: The current year.
+    :return: The number of leap years before the given year.
+    """
+    pass

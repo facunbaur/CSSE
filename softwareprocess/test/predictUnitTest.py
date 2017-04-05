@@ -181,3 +181,15 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractTime(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle invalid fields')
+
+    # 040 calcNumLeapYearsSince2001
+    #
+    #   2001 => 0
+    #   2004 => 0
+    #   2005 => 1
+    #   2016 => 3
+    def test_040_010_ShouldCalcNumLeapYears(self):
+        self.assertEqual(predict.calcNumLeapYearsSince2001(2001), 0)
+        self.assertEqual(predict.calcNumLeapYearsSince2001(2004), 0)
+        self.assertEqual(predict.calcNumLeapYearsSince2001(2005), 1)
+        self.assertEqual(predict.calcNumLeapYearsSince2001(2016), 3)
