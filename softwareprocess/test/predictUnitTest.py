@@ -40,3 +40,10 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractBody(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle missing body')
+
+    def test_020_720_shouldHandleNonStringBody(self):
+        test_input = {'body': 7}
+        expected = {'body': 7, 'error': 'invalid body'}
+        actual = predict.extractBody(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle non-string body')
