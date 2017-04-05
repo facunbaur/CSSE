@@ -140,4 +140,8 @@ def extractTime(sighting):
     :param sighting: A dictionary containing date on a star sighting.
     :return: A datetime.time containing the time of the sighting.
     """
-    pass
+    if 'time' not in sighting:
+        return datetime.time(0, 0, 0)
+    timeStr = sighting['time']
+    fields = timeStr.split(':')
+    return datetime.time(int(fields[0]), int(fields[1]), int(fields[2]))
