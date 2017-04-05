@@ -692,11 +692,10 @@ class operationsTest(unittest.TestCase):
         self.assertEqual(actual, expected)
 
     def test500_040_ShouldDispatchToPredict(self):
-        input = {
-            'op': 'predict'
-        }
-        expected = copy.deepcopy(input)
-        actual = dispatch.dispatch(input)
+        test_input = {'op':'predict', 'body': 'Betelgeuse', 'date': '2016-01-17', 'time': '03:15:42'}
+        expected = {'op':'predict', 'body': 'Betelgeuse', 'date': '2016-01-17', 'time': '03:15:42',
+                    'long':'75d53.6', 'lat':'7d24.3'}
+        actual = dispatch.dispatch(test_input)
         self.assertEqual(actual, expected)
 
     # Sad Paths
