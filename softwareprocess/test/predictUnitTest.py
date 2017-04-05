@@ -223,5 +223,19 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.calcAriesGHA(input_date, input_time)
         self.assertAlmostEqual(actual, expected, 2)
 
+    # 070 calcStarGHA
+    def test_070_010_ShouldCalcStarGHAAriesStart(self):
+        input_date = datetime.date(2001, 1, 1)
+        input_time = datetime.time(0, 0, 0)
+        input_sha = '0d0.0'
+        expected = '100d42.6'
+        actual = predict.calcStarGHA(input_sha, input_date, input_time)
+        self.assertEqual(actual, expected)
 
-    # 070 calc
+    def test_070_020_ShouldCalcStarGHANominalStar(self):
+        input_date = datetime.date(2016, 1, 17)
+        input_time = datetime.time(3, 15, 42)
+        input_sha = '270d59.1'
+        expected = '75d53.6'
+        actual = predict.calcStarGHA(input_sha, input_date, input_time)
+        self.assertEqual(actual, expected)

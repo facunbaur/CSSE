@@ -207,4 +207,6 @@ def calcStarGHA(starSHA, date, time):
     :param time: The time the mesasurement was made.
     :return: A degree string representation of the GHA.
     """
-    pass
+    gha = util.degreeStringToDegrees(starSHA, False) + calcAriesGHA(date, time)
+    roundedGHA = gha - 360.0 * math.floor(gha / 360.0)
+    return util.degreesToDegreeString(roundedGHA)
