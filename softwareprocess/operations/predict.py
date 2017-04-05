@@ -73,8 +73,12 @@ star_data = {
     'markab': {'sha': '13d36.7', 'declination': '15d17.6'}
 }
 
-initialAriesGHA = util.degreeStringToDegrees('100d42.6')
-ariesGHADecreasePerYear = util.degreeStringToDegrees('0d14.31667')
+initialAriesGHA = util.degreeStringToDegrees('100d42.6', False)
+ariesGHADecreasePerYear = util.degreeStringToDegrees('0d14.31667', False)
+earthRotationalPeriod = 86164.1
+earthClockPeriod = 86400
+dailyRotation = 360.0 * abs(1 - earthRotationalPeriod / earthClockPeriod)
+
 
 def predict(sighting):
     """
@@ -170,4 +174,12 @@ def calcNumLeapYearsSince2001(year):
     return (year - 2001) / 4
 
 def calcAriesGHAStartOfYear(year):
-    pass
+    """
+    calcAriesGHAStartOfYear will calculate Aries' GHA at the beginning of the given year.
+    :param year: The current year.
+    :return: A numeric value, the GHA of Aries at the beginning of the year.
+    """
+    numYears = year - 2001
+    yearProgression = numYears * -1.0 * ariesGHADecreasePerYear
+    leapYearProgression = calcNumLeapYearsSince2001(year) * dailyRotation
+    return initialAriesGHA + yearProgression + leapYearProgression
