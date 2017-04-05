@@ -223,3 +223,5 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.calcAriesGHA(input_date, input_time)
         self.assertAlmostEqual(actual, expected, 2)
 
+
+    # 070 calc

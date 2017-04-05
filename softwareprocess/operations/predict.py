@@ -83,9 +83,9 @@ dailyRotation = 360.0 * abs(1 - earthRotationalPeriod / earthClockPeriod)
 
 def predict(sighting):
     """
-    Stub for the predict operation.
+    Performs predict operation.
     :param sighting: A dictionary containing data on a star sighting.
-    :return: The unmodified sighting.
+    :return: The dictionary, with the latitude and longitude of the prediction fixed.
     """
     return sighting
 
@@ -196,5 +196,15 @@ def calcAriesGHA(date, time):
     secondsSinceNewYears = (currentTime - datetime.datetime(date.year, 1, 1, 0, 0, 0)).total_seconds()
     rotations = secondsSinceNewYears / earthRotationalPeriod
     rotation = rotations - math.floor(rotations)
-    gha = rotation * 360.0 + initialAriesGHA + calcAriesGHAStartOfYear(date.year)
+    gha = rotation * 360.0 + calcAriesGHAStartOfYear(date.year)
     return gha - 360.0 * math.floor(gha / 360.0)
+
+def calcStarGHA(starSHA, date, time):
+    """
+    calcStarGHA will calculate the GHA of a given star at the given date and time
+    :param starSHA: The SHA of the star to calculate.
+    :param date: The date the measurement was made.
+    :param time: The time the mesasurement was made.
+    :return: A degree string representation of the GHA.
+    """
+    pass
