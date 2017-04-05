@@ -32,3 +32,11 @@ class predictUnitTest(unittest.TestCase):
         expected = {'sha': '270d59.1', 'declination': '7d24.3'}
         actual = predict.extractBody(test_input)
         self.assertEqual(actual, expected, 'Should extract mixedcase body')
+
+    # SadPath
+    def test_010_710_shouldHandleMissingBody(self):
+        test_input = {}
+        expected = {'error': 'mandatory information is missing'}
+        actual = predict.extractBody(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle missing body')

@@ -81,8 +81,8 @@ def predict(sighting):
 def extractBody(sighting):
     """
     extractBody will attempt to extract the body field from the given sighting.
-    In the event that there is no valid body field in the input, it will raise a value
-    error containing a diagnostic string.
+    In the event that there is no valid body field in the input, it will add an 'error' field
+    containing a diagnostic string.
     :param sighting: A dictionary containing data on a star sighting.
     :return: A dictionary mapping 'sha' to the star's SHA, and 'declination' to the start's Declination.
     """
@@ -93,7 +93,7 @@ def extractDate(sighting):
     """
     extractDate will attempt to extract the date field from the given sighting.
     In the event that there is no key 'date', the default value will be returned.
-    In the event that the value for the 'date' key is invalid, a ValueError will be raised with a
+    In the event that the value for the 'date' key is invalid, an error field will be added containing a
     diagnostic string. Otherwise, this will return a timedate.date value matching the string, which should
     be of the format: yyyy-mm-dd, where yyyy is >= 2001
     :param sighting: A dictionary containing data on a star sighting.
@@ -105,7 +105,7 @@ def extractTime(sighting):
     """
     extractTime will attempt to extract the time field from the given sighting.
     In the event that there is no key 'time', the default value will be returned.
-    In the event that the value for the 'time' key is invalid, a ValueError will be raised with a
+    In the event that the value for the 'time' key is invalid, an error field will be added containing a
     diagnostic string. Otherwise, this will return a timedate.time value matching the string, which should be
     of the format: hh-mm-ss
     :param sighting: A dictionary containing date on a star sighting.
