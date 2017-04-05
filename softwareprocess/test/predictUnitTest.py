@@ -86,4 +86,16 @@ class predictUnitTest(unittest.TestCase):
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle non string date')
 
+    def test_020_720_ShouldHandleTooFewFields(self):
+        test_input = {'date': '2011-10'}
+        expected = {'date': '2011-10', 'error': 'invalid date'}
+        actual = predict.extractDate(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle too few fields')
 
+    def test_020_730_ShouldHandleTooManyFields(self):
+        test_input = {'date': '2011-10-10-10'}
+        expected = {'date': '2011-10-10-10', 'error': 'invalid date'}
+        actual = predict.extractDate(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle too many fields')
