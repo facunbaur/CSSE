@@ -120,7 +120,12 @@ def extractDate(sighting):
     if not len(fields) == 3:
         sighting['error'] = 'invalid date'
         return None
-    return datetime.date(int(fields[0]), int(fields[1]), int(fields[2]))
+    try:
+        date = datetime.date(int(fields[0]), int(fields[1]), int(fields[2]))
+    except Exception:
+        sighting['error'] = 'invalid date'
+        return None
+    return date
 
 def extractTime(sighting):
     """
