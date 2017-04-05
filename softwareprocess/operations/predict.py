@@ -110,6 +110,8 @@ def extractDate(sighting):
     :param sighting: A dictionary containing data on a star sighting.
     :return: A datetime.date containing the date of the sighting.
     """
+    if 'date' not in sighting:
+        return datetime.date(2001, 01, 01)
     dateStr = sighting['date']
     fields = dateStr.split('-')
     return datetime.date(int(fields[0]), int(fields[1]), int(fields[2]))
