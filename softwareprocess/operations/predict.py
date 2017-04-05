@@ -192,10 +192,9 @@ def calcAriesGHA(date, time):
     :param time: The current time.
     :return: A numeric value, the GHA of Aries at the given date and time
     """
-    # currentTime = datetime.datetime.combine(date, time)
-    # secondsSinceEquinox = (currentTime - datetime.datetime(2001, 1, 1, 0, 0, 0)).total_seconds()
-    # rotations = secondsSinceEquinox / earthRotationalPeriod
-    # rotation = rotations - math.floor(rotations)
-    # gha = rotation * 360.0 + initialAriesGHA
-    # return gha - 360.0 * math.floor(gha / 360.0)
-    pass
+    currentTime = datetime.datetime.combine(date, time)
+    secondsSinceNewYears = (currentTime - datetime.datetime(date.year, 1, 1, 0, 0, 0)).total_seconds()
+    rotations = secondsSinceNewYears / earthRotationalPeriod
+    rotation = rotations - math.floor(rotations)
+    gha = rotation * 360.0 + initialAriesGHA + calcAriesGHAStartOfYear(date.year)
+    return gha - 360.0 * math.floor(gha / 360.0)

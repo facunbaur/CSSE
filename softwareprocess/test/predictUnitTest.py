@@ -207,12 +207,19 @@ class predictUnitTest(unittest.TestCase):
         self.assertAlmostEqual(actual, expected, 2)
 
     # 060 calcAriesGHA
-    #   Start of 2001 - 100d46.2
-    #   
-    def test_060_010_ShouldCalcAriesGHA(self):
+    #   Start of 2001 -> 100d46.2
+    #   03:15:42 on 2016-01-17 -> 164d54.5
+    def test_060_010_ShouldCalcAriesGHAStart(self):
         input_date = datetime.date(2001, 1, 1)
         input_time = datetime.time(0, 0, 0)
         expected = util.degreeStringToDegrees('100d42.6', False)
+        actual = predict.calcAriesGHA(input_date, input_time)
+        self.assertAlmostEqual(actual, expected, 2)
+
+    def test_060_010_ShouldCalcAriesGHANominal(self):
+        input_date = datetime.date(2016, 1, 17)
+        input_time = datetime.time(3, 15, 42)
+        expected = util.degreeStringToDegrees('164d54.5', False)
         actual = predict.calcAriesGHA(input_date, input_time)
         self.assertAlmostEqual(actual, expected, 2)
 
