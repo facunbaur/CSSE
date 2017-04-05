@@ -64,6 +64,7 @@ class predictUnitTest(unittest.TestCase):
     #   date is not a string
     #   date has < 3 fields
     #   date has > 3 fields
+    #   date ranges are not strings of integers
     #   a date range is too large.
     #   year is before 2001
     def test_020_010_ShouldExtractValidDate(self):
@@ -99,3 +100,17 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractDate(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle too many fields')
+
+    def test_020_740_ShouldHandleNonIntegerFields(self):
+        test_input = {'date': '2011-a-b'}
+        expected = {'date': '2011-a-b', 'error': 'invalid date'}
+        actual = predict.extractDate(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle non integer fields')
+
+    def test_020_750_ShouldHandleInvalidFields(self):
+        test_input = {'date': '2011-13-01'}
+        expected = {'date': '2011-13-01', 'error': 'invalid date'}
+        actual = predict.extractDate(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle invalid fields')
