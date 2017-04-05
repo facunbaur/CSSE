@@ -89,8 +89,11 @@ def extractBody(sighting):
     if not 'body' in sighting:
         sighting['error'] = 'mandatory information is missing'
         return None
-    star = sighting['body'].lower()
-    return star_data[star]
+    star = sighting['body']
+    if not isinstance(star, basestring):
+        sighting['error'] = 'invalid body'
+        return None
+    return star_data[star.lower()]
 
 def extractDate(sighting):
     """
