@@ -41,9 +41,16 @@ class predictUnitTest(unittest.TestCase):
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle missing body')
 
-    def test_020_720_shouldHandleNonStringBody(self):
+    def test_010_720_shouldHandleNonStringBody(self):
         test_input = {'body': 7}
         expected = {'body': 7, 'error': 'invalid body'}
         actual = predict.extractBody(test_input)
         self.assertIsNone(actual)
         self.assertEqual(test_input, expected, 'Should handle non-string body')
+
+    def test_010_730_shouldHandleNonExistentBody(self):
+        test_input = {'body': 'unknown'}
+        expected = {'body': 'unknown', 'error': 'star not in catalog'}
+        actual = predict.extractBody(test_input)
+        self.assertIsNone(actual)
+        self.assertEqual(test_input, expected, 'Should handle nonexistent star name')
