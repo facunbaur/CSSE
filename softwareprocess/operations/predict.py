@@ -8,6 +8,7 @@
     @author: Mitchell Price
 """
 import datetime
+import math
 
 import softwareprocess.operations.util as util
 
@@ -183,3 +184,18 @@ def calcAriesGHAStartOfYear(year):
     yearProgression = numYears * -1.0 * ariesGHADecreasePerYear
     leapYearProgression = calcNumLeapYearsSince2001(year) * dailyRotation
     return initialAriesGHA + yearProgression + leapYearProgression
+
+def calcAriesGHA(date, time):
+    """
+    calcAriesGHANow will calculate Aries' GHA at the given date and time.
+    :param date: The current date.
+    :param time: The current time.
+    :return: A numeric value, the GHA of Aries at the given date and time
+    """
+    # currentTime = datetime.datetime.combine(date, time)
+    # secondsSinceEquinox = (currentTime - datetime.datetime(2001, 1, 1, 0, 0, 0)).total_seconds()
+    # rotations = secondsSinceEquinox / earthRotationalPeriod
+    # rotation = rotations - math.floor(rotations)
+    # gha = rotation * 360.0 + initialAriesGHA
+    # return gha - 360.0 * math.floor(gha / 360.0)
+    pass

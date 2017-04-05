@@ -198,10 +198,21 @@ class predictUnitTest(unittest.TestCase):
     # 050 calcAriesGHAStartOfYear
     #   2001 => 0
     #   2016 => 100d4.8
-    def test_040_010_ShouldCalcAriesGHAStartOfYear(self):
+    def test_050_010_ShouldCalcAriesGHAStartOfYear(self):
         actual = predict.calcAriesGHAStartOfYear(2001)
         expected = util.degreeStringToDegrees('100d42.6', False)
-        self.assertAlmostEqual(actual, expected, 4)
+        self.assertAlmostEqual(actual, expected, 2)
         actual = predict.calcAriesGHAStartOfYear(2016)
         expected = util.degreeStringToDegrees('100d4.8', False)
-        self.assertAlmostEqual(actual, expected, 4)
+        self.assertAlmostEqual(actual, expected, 2)
+
+    # 060 calcAriesGHA
+    #   Start of 2001 - 100d46.2
+    #   
+    def test_060_010_ShouldCalcAriesGHA(self):
+        input_date = datetime.date(2001, 1, 1)
+        input_time = datetime.time(0, 0, 0)
+        expected = util.degreeStringToDegrees('100d42.6', False)
+        actual = predict.calcAriesGHA(input_date, input_time)
+        self.assertAlmostEqual(actual, expected, 2)
+
