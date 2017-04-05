@@ -27,7 +27,7 @@ class predictUnitTest(unittest.TestCase):
         actual = predict.extractBody(test_input)
         self.assertEqual(actual, expected, 'Should extract uppercase body')
 
-     def test_010_030_shouldExtractBodyMixedcase(self):
+    def test_010_030_shouldExtractBodyMixedcase(self):
         test_input = {'body': 'betelgeuse'}
         expected = {'sha': '270d59.1', 'declination': '7d24.3'}
         actual = predict.extractBody(test_input)
