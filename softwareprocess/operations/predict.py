@@ -162,4 +162,4 @@ def calcNumLeapYearsSince2001(year):
     :param year: The current year.
     :return: The number of leap years before the given year.
     """
-    pass
+    return (year - 2001) / 4
