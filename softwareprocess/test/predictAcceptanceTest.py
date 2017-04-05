@@ -1,7 +1,7 @@
 import unittest
 import softwareprocess.operations.predict as predict
 
-class predictAcceptanceTest(unittest.TestCase):
+class TestPredictAcceptance(unittest.TestCase):
 
      # 100 predict
     #   Desired level of confidence:    boundary value analysis
