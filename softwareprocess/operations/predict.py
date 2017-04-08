@@ -102,10 +102,11 @@ def predict(sighting):
         return sighting
     if 'long' in sighting:
         sighting['error'] = 'long key cannot be passed'
-        return  sighting
+        return sighting
     sighting['lat'] = body['declination']
     sighting['long'] = calcStarGHA(body['sha'], date, time)
     return sighting
+
 
 def extractBody(sighting):
     """
@@ -127,6 +128,7 @@ def extractBody(sighting):
         sighting['error'] = 'star not in catalog'
         return None
     return star_data[star]
+
 
 def extractDate(sighting):
     """
@@ -158,6 +160,7 @@ def extractDate(sighting):
         return None
     return date
 
+
 def extractTime(sighting):
     """
     extractTime will attempt to extract the time field from the given sighting.
@@ -184,13 +187,15 @@ def extractTime(sighting):
         sighting['error'] = 'invalid time'
         return None
 
-def calcNumLeapYearsSince2001(year):
+
+def calcNumLeapYearsSinceBaseYear(year):
     """
     calcNumLeapYearsSince2001 will determine how many leap years occurred before the given year.
     :param year: The current year.
     :return: The number of leap years before the given year.
     """
     return (year - baseYear) / 4
+
 
 def calcAriesGHAStartOfYear(year):
     """
@@ -200,8 +205,9 @@ def calcAriesGHAStartOfYear(year):
     """
     numYears = year - baseYear
     yearProgression = numYears * -1.0 * ariesGHADecreasePerYear
-    leapYearProgression = calcNumLeapYearsSince2001(year) * dailyRotation
+    leapYearProgression = calcNumLeapYearsSinceBaseYear(year) * dailyRotation
     return initialAriesGHA + yearProgression + leapYearProgression
+
 
 def calcAriesGHA(date, time):
     """
@@ -217,6 +223,7 @@ def calcAriesGHA(date, time):
     gha = rotation * 360.0 + calcAriesGHAStartOfYear(date.year)
     return roundAngle(gha)
 
+
 def calcStarGHA(starSHA, date, time):
     """
     calcStarGHA will calculate the GHA of a given star at the given date and time
@@ -228,6 +235,7 @@ def calcStarGHA(starSHA, date, time):
     gha = util.degreeStringToDegrees(starSHA, False) + calcAriesGHA(date, time)
     roundedGHA = roundAngle(gha)
     return util.degreesToDegreeString(roundedGHA)
+
 
 def roundAngle(angle):
     """

@@ -190,10 +190,10 @@ class predictUnitTest(unittest.TestCase):
     #   2005 => 1
     #   2016 => 3
     def test_040_010_ShouldCalcNumLeapYears(self):
-        self.assertEqual(predict.calcNumLeapYearsSince2001(2001), 0)
-        self.assertEqual(predict.calcNumLeapYearsSince2001(2004), 0)
-        self.assertEqual(predict.calcNumLeapYearsSince2001(2005), 1)
-        self.assertEqual(predict.calcNumLeapYearsSince2001(2016), 3)
+        self.assertEqual(predict.calcNumLeapYearsSinceBaseYear(2001), 0)
+        self.assertEqual(predict.calcNumLeapYearsSinceBaseYear(2004), 0)
+        self.assertEqual(predict.calcNumLeapYearsSinceBaseYear(2005), 1)
+        self.assertEqual(predict.calcNumLeapYearsSinceBaseYear(2016), 3)
 
     # 050 calcAriesGHAStartOfYear
     #   2001 => 0
