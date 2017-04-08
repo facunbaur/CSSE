@@ -79,6 +79,7 @@ ariesGHADecreasePerYear = util.degreeStringToDegrees('0d14.31667', False)
 earthRotationalPeriod = 86164.1
 earthClockPeriod = 86400
 dailyRotation = 360.0 * abs(1 - earthRotationalPeriod / earthClockPeriod)
+baseYear = 2001
 
 
 def predict(sighting):
@@ -138,7 +139,7 @@ def extractDate(sighting):
     :return: A datetime.date containing the date of the sighting.
     """
     if 'date' not in sighting:
-        return datetime.date(2001, 01, 01)
+        return datetime.date(baseYear, 01, 01)
     dateStr = sighting['date']
     if not isinstance(dateStr, basestring):
         sighting['error'] = 'invalid date'
@@ -189,7 +190,7 @@ def calcNumLeapYearsSince2001(year):
     :param year: The current year.
     :return: The number of leap years before the given year.
     """
-    return (year - 2001) / 4
+    return (year - baseYear) / 4
 
 def calcAriesGHAStartOfYear(year):
     """
@@ -197,7 +198,7 @@ def calcAriesGHAStartOfYear(year):
     :param year: The current year.
     :return: A numeric value, the GHA of Aries at the beginning of the year.
     """
-    numYears = year - 2001
+    numYears = year - baseYear
     yearProgression = numYears * -1.0 * ariesGHADecreasePerYear
     leapYearProgression = calcNumLeapYearsSince2001(year) * dailyRotation
     return initialAriesGHA + yearProgression + leapYearProgression
