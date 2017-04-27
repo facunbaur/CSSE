@@ -79,3 +79,42 @@ class correctUnitTest(unittest.TestCase):
             return
         self.assertTrue(False, 'Did not raise error')
 
+
+    # Altitude TESTS
+
+    def test_010_010_shouldExtractAltitude(self):
+        test_input = {'altitude': '45d0.0'}
+        expected = 45
+        actual = correct.extractMeasurement(test_input, 'altitude', 0, 90)
+        self.assertAlmostEqual(actual, expected, 3, 'Should extract altitude')
+
+    def test_010_090_handleMissingAltitude(self):
+        test_input = {}
+        expected = {'error': 'missing mandatory field altitude'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'altitude', 0, 90)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
+    def test_010_091_handleLowAltitude(self):
+        test_input = {'long': '-0d1.0'}
+        expected = {'long': '-0d1.0', 'error': 'long is invalid'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'long', 0, 360)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
+    def test_010_091_handleHighAltitude(self):
+        test_input = {'long': '360d1.0'}
+        expected = {'long': '360d1.0', 'error': 'long is invalid'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'long', 0, 360)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
