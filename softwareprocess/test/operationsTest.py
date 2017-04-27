@@ -675,13 +675,13 @@ class operationsTest(unittest.TestCase):
         actual = dispatch.dispatch(input)
         self.assertEqual(actual, expected)
 
-    def test500_020_ShouldDispatchToCorrect(self):
-        input = {
-            'op': 'correct'
-        }
-        expected = copy.deepcopy(input)
-        actual = dispatch.dispatch(input)
-        self.assertEqual(actual, expected)
+    # def test500_020_ShouldDispatchToCorrect(self):
+    #     input = {
+    #         'op': 'correct'
+    #     }
+    #     expected = copy.deepcopy(input)
+    #     actual = dispatch.dispatch(input)
+    #     self.assertEqual(actual, expected)
 
     def test500_030_ShouldDispatchToLocate(self):
         input = {

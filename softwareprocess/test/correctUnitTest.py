@@ -4,8 +4,7 @@ import softwareprocess.operations.correct as correct
 class correctUnitTest(unittest.TestCase):
 
     def test_010_010_shouldExtractLatitude(self):
-        test_input = {'body': 'betelgeuse'}
-        expected = {'sha': '270d59.1', 'declination': '7d24.3'}
+        test_input = {'lat': '45d0.0'}
+        expected = 45
         actual = correct.extractMeasurement(test_input, 'lat', -90, 90)
-        self.assertEqual(actual, expected, 'Should extract latitude')
-    pass
+        self.assertAlmostEqual(actual, expected, 3, 'Should extract latitude')
