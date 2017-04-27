@@ -118,3 +118,40 @@ class correctUnitTest(unittest.TestCase):
             return
         self.assertTrue(False, 'Did not raise error')
 
+    # ASSUMED LATITUDE
+
+    def test_010_010_shouldExtractAssumedLatitude(self):
+        test_input = {'assumedLat': '45d0.0'}
+        expected = 45
+        actual = correct.extractMeasurement(test_input, 'assumedLat', -90, 90)
+        self.assertAlmostEqual(actual, expected, 3, 'Should extract assumed latitude')
+
+    def test_010_090_handleMissingAssumedLatitude(self):
+        test_input = {}
+        expected = {'error': 'missing mandatory field assumedLat'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'assumedLat', -90, 90)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
+    def test_010_091_handleLowAssumedLatitude(self):
+        test_input = {'assumedLat': '-90d1.0'}
+        expected = {'assumedLat': '-90d1.0', 'error': 'assumedLat is invalid'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'assumedLat', -90, 90)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
+    def test_010_091_handleHighAssumedLatitude(self):
+        test_input = {'assumedLat': '90d1.0'}
+        expected = {'assumedLat': '90d1.0', 'error': 'assumedLat is invalid'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'assumedLat', -90, 90)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
