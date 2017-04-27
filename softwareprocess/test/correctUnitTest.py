@@ -195,7 +195,7 @@ class correctUnitTest(unittest.TestCase):
             return
         self.assertTrue(False, 'Did not raise error')
 
-    def test_020_010_shouldCalculateCorrectedDistance(self):
+    def test_020_010_shouldCalculateIntermediateDistance(self):
         expected = -0.789410565
         inLat = util.degreeStringToDegrees('16d32.3', False)
         inLon = util.degreeStringToDegrees('95d41.6', False)
@@ -203,3 +203,13 @@ class correctUnitTest(unittest.TestCase):
         inAssumedLon = util.degreeStringToDegrees('74d35.3', False)
         actual = correct.calculateIntermediateDistance(inLat, inAssumedLat, inLon, inAssumedLon)
         self.assertAlmostEqual(expected, actual, 3)
+
+    def test_030_010_shouldCalculateCorrectedDistance(self):
+        expected = 3950
+        inLat = util.degreeStringToDegrees('16d32.3', False)
+        inLon = util.degreeStringToDegrees('95d41.6', False)
+        altitude = util.degreeStringToDegrees('13d42.3', False)
+        inAssumedLat = util.degreeStringToDegrees('-53d38.4', False)
+        inAssumedLon = util.degreeStringToDegrees('74d35.3', False)
+        actual = correct.calculateCorrectedDistance(inLat, inAssumedLat, altitude, inLon, inAssumedLon)
+        self.assertAlmostEqual(expected, actual, 6)

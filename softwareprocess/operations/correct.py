@@ -61,7 +61,9 @@ def extractMeasurement(sighting, name, lowBound, highBound):
         raise ValueError()
     return measurement
 
-def calculateCorrectedDistance():
+def calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon):
+    intermediate = calculateIntermediateDistance(lat, assumedLat, lon, assumedLon)
+    correctedAltitude = 
     pass
 
 def calculateCorrectedAzimuth():
