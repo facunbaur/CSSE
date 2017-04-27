@@ -155,3 +155,41 @@ class correctUnitTest(unittest.TestCase):
             self.assertEqual(test_input, expected, 'Should have error')
             return
         self.assertTrue(False, 'Did not raise error')
+
+    # Assumed LONGITUDE TESTS
+
+    def test_010_010_shouldExtractAssumedLongitude(self):
+        test_input = {'assumedLong': '45d0.0'}
+        expected = 45
+        actual = correct.extractMeasurement(test_input, 'assumedLong', 0, 360)
+        self.assertAlmostEqual(actual, expected, 3, 'Should extract assumed longitude')
+
+    def test_010_090_handleMissingAssumedLongitude(self):
+        test_input = {}
+        expected = {'error': 'missing mandatory field assumedLong'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'assumedLong', 0, 360)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
+    def test_010_091_handleLowAssumedLongitude(self):
+        test_input = {'assumedLong': '-0d1.0'}
+        expected = {'assumedLong': '-0d1.0', 'error': 'assumedLong is invalid'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'assumedLong', 0, 360)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
+
+    def test_010_091_handleHighAssumedLongitude(self):
+        test_input = {'assumedLong': '360d1.0'}
+        expected = {'assumedLong': '360d1.0', 'error': 'assumedLong is invalid'}
+        try:
+            actual = correct.extractMeasurement(test_input, 'assumedLong', 0, 360)
+        except ValueError:
+            self.assertEqual(test_input, expected, 'Should have error')
+            return
+        self.assertTrue(False, 'Did not raise error')
