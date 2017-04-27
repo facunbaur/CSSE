@@ -10,7 +10,7 @@
 
 import math
 
-from softwareprocess.operations.util import degreeStringToDegrees, degreesToDegreeString
+from util import degreeStringToDegrees, degreesToDegreeString
 
 
 def adjust(sighting):

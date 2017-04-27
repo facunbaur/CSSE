@@ -10,7 +10,7 @@
 import datetime
 import math
 
-import softwareprocess.operations.util as util
+import util
 
 star_data = {
     'alpheratz': {'sha': '357d41.7', 'declination': '29d10.9'},
