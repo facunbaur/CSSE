@@ -42,6 +42,8 @@ def correct(sighting):
     except:
         return sighting
 
+    sighting["correctedDistance"] = calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon)
+    sighting["correctedAzimuth"] = calculateCorrectedAzimuth(lat, assumedLat, lon, assumedLon)
     return sighting
 
 def extractMeasurement(sighting, name, lowBound, highBound):
@@ -67,7 +69,7 @@ def calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon):
     dist = math.degrees(math.radians(altitude) - correctedAltitude) * 60
     return round(dist)
 
-def calculateCorrectedAzimuth(lat, assumedLat, altitude, lon, assumedLon):
+def calculateCorrectedAzimuth(lat, assumedLat, lon, assumedLon):
     latr = math.radians(lat)
     assumedLatr = math.radians(assumedLat)
     intermediate = calculateIntermediateDistance(lat, assumedLat, lon, assumedLon)

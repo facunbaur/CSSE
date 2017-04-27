@@ -4,6 +4,26 @@ import softwareprocess.operations.util as util
 
 class correctUnitTest(unittest.TestCase):
 
+    def test_000_010_shouldCorrect(self):
+        test_input = {
+            'lat': '16d32.3',
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3'
+        }
+        expected = {
+            'lat': '16d32.3',
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3',
+            'correctedDistance': '3950',
+            'correctedAzimuth': '164d42.9'
+        }
+        actual = correct.correct(test_input)
+        self.assertEqual(expected, actual)
+
     def test_010_010_shouldExtractLatitude(self):
         test_input = {'lat': '45d0.0'}
         expected = 45
