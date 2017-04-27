@@ -213,3 +213,13 @@ class correctUnitTest(unittest.TestCase):
         inAssumedLon = util.degreeStringToDegrees('74d35.3', False)
         actual = correct.calculateCorrectedDistance(inLat, inAssumedLat, altitude, inLon, inAssumedLon)
         self.assertAlmostEqual(expected, actual, 6)
+
+    def test_040_010_shouldCalculateCorrectedAzimuth(self):
+        expected = '164d42.9'
+        inLat = util.degreeStringToDegrees('16d32.3', False)
+        inLon = util.degreeStringToDegrees('95d41.6', False)
+        altitude = util.degreeStringToDegrees('13d42.3', False)
+        inAssumedLat = util.degreeStringToDegrees('-53d38.4', False)
+        inAssumedLon = util.degreeStringToDegrees('74d35.3', False)
+        actual = correct.calculateCorrectedAzimuth(inLat, inAssumedLat, altitude, inLon, inAssumedLon)
+        self.assertEqual(expected, actual)
