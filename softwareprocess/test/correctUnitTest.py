@@ -99,20 +99,20 @@ class correctUnitTest(unittest.TestCase):
         self.assertTrue(False, 'Did not raise error')
 
     def test_010_091_handleLowAltitude(self):
-        test_input = {'long': '-0d1.0'}
-        expected = {'long': '-0d1.0', 'error': 'long is invalid'}
+        test_input = {'altitude': '-0d1.0'}
+        expected = {'altitude': '-0d1.0', 'error': 'altitude is invalid'}
         try:
-            actual = correct.extractMeasurement(test_input, 'long', 0, 360)
+            actual = correct.extractMeasurement(test_input, 'altitude', 0, 90)
         except ValueError:
             self.assertEqual(test_input, expected, 'Should have error')
             return
         self.assertTrue(False, 'Did not raise error')
 
     def test_010_091_handleHighAltitude(self):
-        test_input = {'long': '360d1.0'}
-        expected = {'long': '360d1.0', 'error': 'long is invalid'}
+        test_input = {'altitude': '90d1.0'}
+        expected = {'altitude': '90d1.0', 'error': 'altitude is invalid'}
         try:
-            actual = correct.extractMeasurement(test_input, 'long', 0, 360)
+            actual = correct.extractMeasurement(test_input, 'altitude', 0, 90)
         except ValueError:
             self.assertEqual(test_input, expected, 'Should have error')
             return
