@@ -42,8 +42,8 @@ def correct(sighting):
     except:
         return sighting
 
-    sighting["correctedDistance"] = calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon)
-    sighting["correctedAzimuth"] = str(int(calculateCorrectedAzimuth(lat, assumedLat, lon, assumedLon)))
+    sighting["correctedDistance"] = str(int(calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon)))
+    sighting["correctedAzimuth"] = calculateCorrectedAzimuth(lat, assumedLat, lon, assumedLon)
     return sighting
 
 def extractMeasurement(sighting, name, lowBound, highBound):
