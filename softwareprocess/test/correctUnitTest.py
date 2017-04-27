@@ -241,5 +241,5 @@ class correctUnitTest(unittest.TestCase):
         altitude = util.degreeStringToDegrees('13d42.3', False)
         inAssumedLat = util.degreeStringToDegrees('-53d38.4', False)
         inAssumedLon = util.degreeStringToDegrees('74d35.3', False)
-        actual = correct.calculateCorrectedAzimuth(inLat, inAssumedLat, altitude, inLon, inAssumedLon)
+        actual = correct.calculateCorrectedAzimuth(inLat, inAssumedLat, inLon, inAssumedLon)
         self.assertEqual(expected, actual)
