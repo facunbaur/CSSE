@@ -67,8 +67,15 @@ def calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon):
     dist = math.degrees(math.radians(altitude) - correctedAltitude) * 60
     return round(dist)
 
-def calculateCorrectedAzimuth():
-    pass
+def calculateCorrectedAzimuth(lat, assumedLat, altitude, lon, assumedLon):
+    latr = math.radians(lat)
+    assumedLatr = math.radians(assumedLat)
+    intermediate = calculateIntermediateDistance(lat, assumedLat, lon, assumedLon)
+    azimuthr = math.acos(
+        (math.sin(latr) - (math.sin(assumedLatr) * intermediate)) /
+        (math.cos(assumedLatr) * math.cos(math.asin(intermediate)))
+    )
+    return degreesToDegreeString(math.degrees(azimuthr))
 
 def calculateIntermediateDistance(lat, assumedLat, lon, assumedLon):
     lha = math.radians(lon + assumedLon)
