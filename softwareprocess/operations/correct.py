@@ -7,6 +7,7 @@
 
     @author: Mitchell Price
 """
+import math
 from util import degreeStringToDegrees, degreesToDegreeString
 
 
@@ -67,4 +68,8 @@ def calculateCorrectedAzimuth():
     pass
 
 def calculateIntermediateDistance(lat, assumedLat, lon, assumedLon):
-    lha =
+    lha = math.radians(lon + assumedLon)
+    latr = math.radians(lat)
+    assumedLatr = math.radians(assumedLat)
+    return (math.sin(latr) * math.sin(assumedLatr)) + (
+        math.cos(latr) * math.cos(assumedLatr) * math.cos(lha))
