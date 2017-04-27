@@ -63,7 +63,9 @@ def extractMeasurement(sighting, name, lowBound, highBound):
 
 def calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon):
     intermediate = calculateIntermediateDistance(lat, assumedLat, lon, assumedLon)
-    correctedAltitude = 
+    correctedAltitude = math.asin(intermediate)
+    dist = math.degrees(altitude - correctedAltitude) * 60
+    return round(dist)
     pass
 
 def calculateCorrectedAzimuth():
