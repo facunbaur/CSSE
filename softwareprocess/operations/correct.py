@@ -59,3 +59,12 @@ def extractMeasurement(sighting, name, lowBound, highBound):
         sighting['error'] = name + ' is invalid'
         raise ValueError()
     return measurement
+
+def calculateCorrectedDistance():
+    pass
+
+def calculateCorrectedAzimuth():
+    pass
+
+def calculateIntermediateDistance(lat, assumedLat, lon, assumedLon):
+    lha =

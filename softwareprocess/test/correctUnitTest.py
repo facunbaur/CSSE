@@ -1,5 +1,6 @@
 import unittest
 import softwareprocess.operations.correct as correct
+import softwareprocess.operations.util as util
 
 class correctUnitTest(unittest.TestCase):
 
@@ -193,3 +194,12 @@ class correctUnitTest(unittest.TestCase):
             self.assertEqual(test_input, expected, 'Should have error')
             return
         self.assertTrue(False, 'Did not raise error')
+
+    def test_020_010_shouldCalculateCorrectedDistance(self):
+        expected = -0.789410565
+        inLat = util.degreeStringToDegrees('16d32.3', False)
+        inLon = util.degreeStringToDegrees('16d32.3', False)
+        inAssumedLat = util.degreeStringToDegrees('16d32.3', False)
+        inAssumedLon = util.degreeStringToDegrees('16d32.3', False)
+        actual = correct.calculateIntermediateDistance(inLat, inAssumedLat, inLon, inAssumedLon)
+        self.assertAlmostEqual(expected, actual, 3, 'Corrected distance')
