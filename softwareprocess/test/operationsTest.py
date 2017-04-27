@@ -163,7 +163,7 @@ class operationsTest(unittest.TestCase):
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
 
     def test510_720NegativeX(self):
-        expectedString = "Negative number of degrees"
+        expectedString = "Measurement too small"
         with self.assertRaises(ValueError) as context:
             softwareprocess.operations.util.degreeStringToDegrees('-15d30.0')
         self.assertEquals(expectedString, context.exception.args[0][0:len(expectedString)])
