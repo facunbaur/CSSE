@@ -95,7 +95,7 @@ class correctUnitTest(unittest.TestCase):
             'altitude': '13d42.3',
             'assumedLat': '-53d38.4',
             'assumedLong': '74d35.3',
-            'correctedAzimuth': '165d42.9',
+            'correctedAzimuth': '164d42.9',
             'correctedDistance': '3950'
         }
         actual = correct.correct(test_input)

@@ -18,8 +18,6 @@ def degreeStringToDegrees(degreeString, validate=True):
         degrees = int(degreeString[1:dIndex])
     else:
         degrees = int(degreeString[:dIndex])
-    # if degrees < 0:
-    #     raise ValueError("Negative number of degrees")
     minutes = float(degreeString[dIndex+1:])
     if minutes < 0:
         raise ValueError("Negative number of minutes")
