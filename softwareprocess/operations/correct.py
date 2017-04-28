@@ -58,7 +58,7 @@ def extractMeasurement(sighting, name, lowBound, highBound):
     except ValueError:
         sighting['error'] = name + ' is invalid'
         raise ValueError()
-    if measurement < lowBound or measurement > highBound:
+    if measurement <= lowBound or measurement >= highBound:
         sighting['error'] = name + ' is invalid'
         raise ValueError()
     return measurement
