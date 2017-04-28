@@ -23,7 +23,7 @@ def correct(sighting):
         return sighting
 
     try:
-        lon = extractMeasurement(sighting, "long", 0, 360)
+        lon = extractMeasurement(sighting, "long", 0, 360, False)
     except:
         return sighting
 
@@ -38,7 +38,7 @@ def correct(sighting):
         return sighting
 
     try:
-        assumedLon = extractMeasurement(sighting, "assumedLong", 0, 360)
+        assumedLon = extractMeasurement(sighting, "assumedLong", 0, 360, False)
     except:
         return sighting
 
@@ -46,7 +46,7 @@ def correct(sighting):
     sighting["correctedAzimuth"] = calculateCorrectedAzimuth(lat, assumedLat, lon, assumedLon)
     return sighting
 
-def extractMeasurement(sighting, name, lowBound, highBound):
+def extractMeasurement(sighting, name, lowBound, highBound, lowExclusive=True):
     if name not in sighting:
         sighting['error'] = 'missing mandatory field ' + name
         raise ValueError()
@@ -58,7 +58,7 @@ def extractMeasurement(sighting, name, lowBound, highBound):
     except ValueError:
         sighting['error'] = name + ' is invalid'
         raise ValueError()
-    if measurement <= lowBound or measurement >= highBound:
+    if (lowExclusive and measurement <= lowBound) or measurement < lowBound or measurement >= highBound:
         sighting['error'] = name + ' is invalid'
         raise ValueError()
     return measurement

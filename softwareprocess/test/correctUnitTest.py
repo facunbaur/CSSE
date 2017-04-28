@@ -81,6 +81,63 @@ class correctUnitTest(unittest.TestCase):
         actual = correct.correct(test_input)
         self.assertEqual(expected, actual)
 
+    def test_000_053_shouldHandleLowLon(self):
+        test_input = {
+            'lat': '16d32.3',
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3'
+        }
+        expected = {
+            'lat': '16d32.3',
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3',
+            'error': 'long is invalid'
+        }
+        actual = correct.correct(test_input)
+        self.assertEqual(expected, actual)
+
+    def test_000_054_shouldHandleHighLon(self):
+        test_input = {
+            'lat': '16d32.3',
+            'long': '360d0.0',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3'
+        }
+        expected = {
+            'lat': '16d32.3',
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3',
+            'error': 'long is invalid'
+        }
+        actual = correct.correct(test_input)
+        self.assertEqual(expected, actual)
+
+    def test_000_055_shouldHandleNumLon(self):
+        test_input = {
+            'lat': '16d32.3',
+            'long': 1,
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3'
+        }
+        expected = {
+            'lat': '16d32.3',
+            'long': 1,
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3',
+            'error': 'long is invalid'
+        }
+        actual = correct.correct(test_input)
+        self.assertEqual(expected, actual)
+
     def test_010_010_shouldExtractLatitude(self):
         test_input = {'lat': '45d0.0'}
         expected = 45
