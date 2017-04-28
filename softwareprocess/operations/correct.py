@@ -19,27 +19,23 @@ def correct(sighting):
     """
     try:
         lat = extractMeasurement(sighting, "lat", -90, 90)
-    except:
+    except ValueError:
         return sighting
-
     try:
         lon = extractMeasurement(sighting, "long", 0, 360, False)
-    except:
+    except ValueError:
         return sighting
-
     try:
         altitude = extractMeasurement(sighting, "altitude", 0, 90)
-    except:
+    except ValueError:
         return sighting
-
     try:
         assumedLat = extractMeasurement(sighting, "assumedLat", -90, 90)
-    except:
+    except ValueError:
         return sighting
-
     try:
         assumedLon = extractMeasurement(sighting, "assumedLong", 0, 360, False)
-    except:
+    except ValueError:
         return sighting
 
     sighting["correctedDistance"] = str(int(calculateCorrectedDistance(lat, assumedLat, altitude, lon, assumedLon)))
