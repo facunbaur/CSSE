@@ -62,6 +62,25 @@ class correctUnitTest(unittest.TestCase):
         actual = correct.correct(test_input)
         self.assertEqual(expected, actual)
 
+    def test_000_052_shouldHandleNumLat(self):
+        test_input = {
+            'lat': 1,
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3'
+        }
+        expected = {
+            'lat': 1,
+            'long': '95d41.6',
+            'altitude': '13d42.3',
+            'assumedLat': '-53d38.4',
+            'assumedLong': '74d35.3',
+            'error': 'lat is invalid'
+        }
+        actual = correct.correct(test_input)
+        self.assertEqual(expected, actual)
+
     def test_010_010_shouldExtractLatitude(self):
         test_input = {'lat': '45d0.0'}
         expected = 45
