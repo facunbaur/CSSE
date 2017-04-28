@@ -51,7 +51,7 @@ def extractMeasurement(sighting, name, lowBound, highBound):
         sighting['error'] = 'missing mandatory field ' + name
         raise ValueError()
     elif not isinstance(sighting[name], basestring):
-        sighting['error'] =  name + 'is invalid'
+        sighting['error'] = name + ' is invalid'
         raise ValueError()
     try:
         measurement = degreeStringToDegrees(sighting[name], False)
