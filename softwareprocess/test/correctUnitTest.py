@@ -95,7 +95,8 @@ class correctUnitTest(unittest.TestCase):
             'altitude': '13d42.3',
             'assumedLat': '-53d38.4',
             'assumedLong': '74d35.3',
-            'error': 'long is invalid'
+            'correctedAzimuth': '165d42.9',
+            'correctedDistance': '3950'
         }
         actual = correct.correct(test_input)
         self.assertEqual(expected, actual)
@@ -110,7 +111,7 @@ class correctUnitTest(unittest.TestCase):
         }
         expected = {
             'lat': '16d32.3',
-            'long': '95d41.6',
+            'long': '360d0.0',
             'altitude': '13d42.3',
             'assumedLat': '-53d38.4',
             'assumedLong': '74d35.3',
